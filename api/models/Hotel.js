@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const {Schema} = mongoose;
 
-const StaySchema = new mongoose.Schema({
+const HotelSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -25,4 +25,4 @@ const StaySchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model("Stay", StaySchema);
+export default mongoose.model("Hotel", HotelSchema);

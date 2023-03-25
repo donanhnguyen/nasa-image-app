@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRoute from './routes/auth.js'; 
 import usersRoute from './routes/users.js'; 
-import staysRoute from './routes/stays.js'; 
+import hotelsRoute from './routes/hotels.js'; 
 import bookingsRoute from './routes/bookings.js';
 
 const app = express(); 
@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use('/api/auth/', authRoute);
 app.use('/api/users/', usersRoute);
-app.use('/api/stays/', staysRoute);
+app.use('/api/hotels/', hotelsRoute);
 app.use('/api/bookings/', bookingsRoute);
 
 app.listen(8800, () => {
