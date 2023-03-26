@@ -13,7 +13,7 @@ export const createUser = async (req, res) => {
     }
 };
 
-// log in or get single user ingo
+// log in or get single user info
 export const logInUser = async (req, res) => {
     try {
         const foundUser = await User.findById(req.params.id);

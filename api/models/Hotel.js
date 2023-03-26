@@ -4,7 +4,8 @@ const {Schema} = mongoose;
 const HotelSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     planet: {
         type: String,
@@ -18,10 +19,11 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    price: {
-        type: Number,
-        required: true
-    }
+    rooms: [{
+        type: Schema.Types.ObjectId,
+        ref: "Room"
+    }]
+
 
 })
 

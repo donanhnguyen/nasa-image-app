@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const {Schema} = mongoose;
 
 const BookingSchema = new mongoose.Schema({
     nameOfHotel: {
@@ -6,7 +7,7 @@ const BookingSchema = new mongoose.Schema({
         required: true
     },
     planet: {
-        type: Number,
+        type: String,
         required: true
     },
     dateDuration: {
@@ -16,7 +17,17 @@ const BookingSchema = new mongoose.Schema({
     numberOfGuests: {
         type: Number,
         required: true
-    }
+    }, 
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    room: {
+        type: Schema.Types.ObjectId,
+        ref: "Room",
+        required: true
+    },
 
 }, {timestamps: true})
 

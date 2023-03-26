@@ -1,19 +1,10 @@
 import Booking from "../models/Booking.js";
+import User from "../models/User.js";
 
-// get a single booking
-export const getBooking = async (req, res) => {
-    try {
-        const foundBooking = await Booking.findById(req.params.id);
-        res.status(200).json(foundBooking);
-    } catch(err) {
-        res.status(500).json(err);
-    }
-};
-
-// get all bookings
+// get all bookings from a user
 export const getAllBookings = async (req, res) => {
     try {
-        const allBookings = await Booking.find();
+        const allBookings = await Booking.find({user: req.params.userId});
         res.status(200).json(allBookings);
     } catch(err) {
         res.status(500).json(err);
@@ -36,7 +27,7 @@ export const createBooking = async (req, res) => {
 // update a booking
 export const updateBooking = async (req, res) => {
     try {
-        const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true});
+        const updatedBooking = await Booking.findByIdAndUpdate(req.params.bookingId, { $set: req.body }, {new: true});
         res.status(200).json(updatedBooking);
 
     } catch(err) {
@@ -49,7 +40,7 @@ export const updateBooking = async (req, res) => {
 export const deleteBooking = async (req, res) => {
 
     try {
-        await Booking.findByIdAndDelete(req.params.id);
+        await Booking.findByIdAndDelete(req.params.bookingId);
         res.status(200).json("Booking has been cancelled.");
 
     } catch(err) {
