@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import LogIn from './LogIn';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Search from './Search';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +13,7 @@ root.render(
     <Routes>
 
       <Route exact path='/' element={<App />}></Route>
-      <Route path='/login' element={<LogIn />}></Route>
-
+      <Route path='/search' element={<Search />}></Route>
 
     </Routes>
     </BrowserRouter>

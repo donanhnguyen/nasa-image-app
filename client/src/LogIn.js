@@ -1,15 +1,18 @@
 import {useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 
 
-function LogIn() {
+function LogIn(props) {
 
-    const [currentUserState, setCurrentUserState] = useState({
+    const location = useLocation();
+    const [formState, setFormState] = useState({
         username: "",
         password: ""
     });
 
+    const {currentUserState, setCurrentUserState} = props;
 
     useEffect(() => {
         
@@ -18,9 +21,10 @@ function LogIn() {
 
     function logIn (e) {
         e.preventDefault();
-        Axios.get(`http://localhost:8800/api/users/${currentUserState.username}/`)
+        Axios.get(`http://localhost:8800/api/users/${formState.username}/`)
             .then((response) => {
-                if (response.data.password === currentUserState.password) {
+                if (response.data.password === formState.password) {
+                    setCurrentUserState(response.data);
                     alert("Success!");
                 } else {
                     alert("Wrong password.")
@@ -29,12 +33,12 @@ function LogIn() {
     }
 
     function setUsername(e) {
-        setCurrentUserState((prevState) => {
+        setFormState((prevState) => {
             return {...prevState, username: e.target.value}
         })
     }
     function setPassword(e) {
-        setCurrentUserState((prevState) => {
+        setFormState((prevState) => {
             return {...prevState, password: e.target.value}
         })
     }
