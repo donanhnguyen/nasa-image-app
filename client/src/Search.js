@@ -8,7 +8,6 @@ function Search () {
     return (
         <div className="App">
         <header className="App-header">
-            <p>User: {location.state.currentUserState.username}</p>
             <h1>Search Hotels here</h1>
   
         </header>

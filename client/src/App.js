@@ -3,53 +3,31 @@ import './App.css';
 import Axios from 'axios';
 import Nav from './Nav';
 import LogIn from './LogIn';
-import { Link } from 'react-router-dom';
+import Search from './Search';
+import Home from './Home';
+import { GlobalProvider } from './GlobalContext';
+import { Link, BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
-
-  const [currentUserState, setCurrentUserState] = useState(null);
-
-  function displayLogInFormOrNot () {
-    if (!currentUserState) {
-      return <LogIn 
-                setCurrentUserState={setCurrentUserState}
-                currentUserState={currentUserState}
-              />
-    } else {
-      return (
-        <div>
-          <h1>you are logged in as {currentUserState.username}</h1>
-          <Link to='/search' state={{currentUserState: currentUserState}}>go to search page</Link>
-        </div>
-      )
-    }
-  }
-
+ 
 
   return (
     <div className="App">
 
-      <Nav 
-        currentUserState={currentUserState}
-        setCurrentUserState={setCurrentUserState}
-       />
+    <GlobalProvider>
 
-      <header className="App-header">
-          <h1>Galaxy Stays</h1>
+      <BrowserRouter>
+      <Nav/>
+      <Routes>
 
-          <div>
-            {displayLogInFormOrNot()}
-            <button onClick={() => setCurrentUserState(null)}>Log Out</button>
-            
-          </div>
+        <Route exact path='/' element={<Home />}></Route>
+        <Route path='/login' element={<LogIn />}></Route>
+        <Route path='/search' element={<Search />}></Route>
 
+      </Routes>
+      </BrowserRouter>
 
-
-        <div>
-          
-        </div>
-
-      </header>
+    </GlobalProvider>
     </div>
   );
 }
