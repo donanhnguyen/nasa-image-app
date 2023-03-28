@@ -7,6 +7,9 @@ import hotelsRoute from './routes/hotels.js';
 import bookingsRoute from './routes/bookings.js';
 import roomsRoute from './routes/rooms.js'
 import cors from 'cors';
+import Hotel from './models/Hotel.js';
+import Room from './models/Room.js';
+import { seededRooms, seededHotels } from './seed.js';
 
 const app = express(); 
 dotenv.config();
@@ -38,5 +41,6 @@ app.use('/api/hotels/', roomsRoute);
 
 app.listen(8800, () => {
     connect(); 
+    // Hotel.insertMany(seededHotels);
     console.log("hey")
 })

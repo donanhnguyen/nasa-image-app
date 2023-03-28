@@ -10,12 +10,12 @@ const RoomSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    available: {
-        type: Boolean,
+    unavailableDates: {
+        type: Array,
         required: true,
-        default: true
+        default: []
     },
-    hotel: {
+    hotelId: {
         type: Schema.Types.ObjectId,
         ref: "Hotel"
     }

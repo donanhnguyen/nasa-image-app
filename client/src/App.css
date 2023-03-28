@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(rgba(0, 0, 0, 0.832), rgba(3, 39, 171, 0.788));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+/*  */
+
+.search-hotels-container {
+  display: block;
+}
+.search-hotels-container h1 {
+  font-size: 2.5rem;
+}
+.single-hotel-displayed {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  background-color: whitesmoke;
+  color: rgb(7, 106, 255);
+  width: 70%;
+  margin: auto;
+}
+.single-hotel-displayed:hover {
+  background-color: azure;
+}
+.hotel-pic {
+  width: 100%;
+  height: 300px;
+  border-radius: 30px;
+}
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid white;
+  height: 50px;
 }

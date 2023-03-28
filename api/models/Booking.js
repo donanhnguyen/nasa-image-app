@@ -12,19 +12,20 @@ const BookingSchema = new mongoose.Schema({
         required: true
     },
     dateDuration: {
-        type: String,
-        required: true
+        type: Array,
+        required: true,
+        default: []
     },
     numberOfGuests: {
         type: Number,
         required: true
     }, 
-    user: {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    room: {
+    roomId: {
         type: Schema.Types.ObjectId,
         ref: "Room",
         required: true
