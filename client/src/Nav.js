@@ -42,7 +42,7 @@ function Nav (props) {
 
   return (
 
-        <nav>
+        <nav className='nav-bar'>
 
             <ul>
                 <li>
@@ -52,10 +52,10 @@ function Nav (props) {
                   {displaySignUpButtonOrNot()}
                 </li>
                 <li>
-                  <Link to='/'>home</Link>
+                  <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <Link to='/search'>search</Link>
+                  <Link to='/search'>Search</Link>
                 </li>
             </ul>
 

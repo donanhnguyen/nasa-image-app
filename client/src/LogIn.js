@@ -13,6 +13,8 @@ function LogIn(props) {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [errorsState, setErrorsState] = useState("");
+
     const [formState, setFormState] = useState({
         username: "",
         password: ""
@@ -35,11 +37,11 @@ function LogIn(props) {
                     alert("Success!");
                     navigate('/');
                 } else {
-                    alert("Wrong password.")
+                    setErrorsState("Wrong Password");
                 }
             })
             .catch((error) => {
-                alert("Invalid Login")
+                setErrorsState(error.response.data)
             }) 
     }
 
@@ -59,10 +61,17 @@ function LogIn(props) {
     <div className="App">
       <header className="App-header">
 
+        <h1>Log in page</h1>
+
+        {/* display error messages */}
+        <div className='error-messages'>
+            {errorsState}
+        </div>
+
         <form onSubmit={logIn}>
             <input onChange={(e) => setUsername(e)} type='text' placeholder='username'></input>
             <input onChange={(e) => setPassword(e)} type='text' placeholder='password'></input>
-            <button type='submit'>Log In</button>
+            <button className='btn btn-primary btn-lg' type='submit'>Log In</button>
         </form>
 
       </header>

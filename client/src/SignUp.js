@@ -14,6 +14,8 @@ function SignUp (props) {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [errorsState, setErrorsState] = useState("");
+
     const [formState, setFormState] = useState({
         username: "",
         password: ""
@@ -27,17 +29,22 @@ function SignUp (props) {
     }, [])
     
 
-    function logIn (e) {
+    function submitRegister (e) {
         e.preventDefault();
-        Axios.post(`http://localhost:8800/api/auth/register/`, formState)
+        if (formState.username === "" || formState.password === "") {
+            alert("Fields can't be blank!");
+        } else {
+          Axios.post(`http://localhost:8800/api/auth/register/`, formState)
             .then((response) => {
                setCurrentUserState(response.data);
                alert("Successful Register!");
                navigate('/');
             })
             .catch((error) => {
-                alert("Invalid Register")
-            }) 
+                setErrorsState("Username already taken.")
+            })  
+        }
+         
     }
 
     function setUsername(e) {
@@ -56,10 +63,17 @@ function SignUp (props) {
     <div className="App">
       <header className="App-header">
         <h1>sign up page</h1>
-        <form onSubmit={logIn}>
+
+
+        {  /* display error messages */}
+        <div className='error-messages'>
+            {errorsState}
+        </div>
+
+        <form onSubmit={submitRegister}>
             <input onChange={(e) => setUsername(e)} type='text' placeholder='username'></input>
             <input onChange={(e) => setPassword(e)} type='text' placeholder='password'></input>
-            <button type='submit'>Register</button>
+            <button className='btn btn-primary btn-lg'type='submit'>Register</button>
         </form>
 
       </header>

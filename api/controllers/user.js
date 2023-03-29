@@ -15,21 +15,14 @@ export const createUser = async (req, res) => {
 
 // log in or get single user info
 
-// export const logInUser = async (req, res) => {
-//     try {
-//         const foundUser = await User.findById(req.params.id);
-//         res.status(200).json(foundUser);
-
-//     } catch(err) {
-//         res.status(500).json(err);
-//     }
-// };
-
 export const logInUser = async (req, res) => {
     try {
         const foundUser = await User.findOne({username: req.params.username});
-        res.status(200).json(foundUser);
-
+        if (!foundUser) {
+            res.status(404).json("User not found.");
+        } else {
+            res.status(200).json(foundUser);
+        }
     } catch(err) {
         res.status(500).json(err);
     }
