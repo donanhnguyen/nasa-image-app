@@ -32,6 +32,14 @@ function Nav (props) {
     }
   }
 
+  function displaySignUpButtonOrNot () {
+    if (!contextInfo.currentUserState) {
+      return (
+        <Link to='/signup'>Sign Up</Link>
+      )
+    } 
+  }
+
   return (
 
         <nav>
@@ -39,6 +47,9 @@ function Nav (props) {
             <ul>
                 <li>
                   {displayLogInOrLogOutButton()}
+                </li>
+                <li>
+                  {displaySignUpButtonOrNot()}
                 </li>
                 <li>
                   <Link to='/'>home</Link>
