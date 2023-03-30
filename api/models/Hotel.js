@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import Room from "./Room.js";
+
 const {Schema} = mongoose;
 
 const HotelSchema = new mongoose.Schema({
@@ -19,8 +21,10 @@ const HotelSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Room"
     }]
-
-
 })
+
+HotelSchema.methods.getRooms = function () {
+    return mongoose.model('Room').find( {hotedId: this._id} )
+}
 
 export default mongoose.model("Hotel", HotelSchema);

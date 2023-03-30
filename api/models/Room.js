@@ -17,7 +17,8 @@ const RoomSchema = new mongoose.Schema({
     },
     hotelId: {
         type: Schema.Types.ObjectId,
-        ref: "Hotel"
+        ref: "Hotel",
+        required: true
     }
 
 }, {timestamps: true})

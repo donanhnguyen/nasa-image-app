@@ -4,7 +4,7 @@ import User from "../models/User.js";
 // get all bookings from a user
 export const getAllBookings = async (req, res) => {
     try {
-        const allBookings = await Booking.find({user: req.params.userId});
+        const allBookings = await Booking.find({userId: req.params.userId});
         res.status(200).json(allBookings);
     } catch(err) {
         res.status(500).json(err);
