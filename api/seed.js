@@ -89,7 +89,10 @@ const seededHotels = [
 
 const seededRooms = [
     {
-
+        name: "Small Room",
+        price: 50,
+        unvailableDates: [],
+        hotelId: '642343fc0f7aae8f424ba88b'
     },
 ]
 
