@@ -18,7 +18,6 @@ function Home () {
                 : 
                 <h1>You are not logged in.</h1>
             }
-            <h1>this is home page</h1>
         </div>
     )
 }

@@ -17,12 +17,15 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    // rooms: [Room]
+    rooms: [{
+        type: Schema.Types.ObjectId, 
+        ref: "Room"
+    }]
 })
 
 // doesnt work
-// HotelSchema.methods.getRooms = function () {
-//     return mongoose.model(Room).find( {hotedId: this._id} )
-// }
+HotelSchema.methods.getRooms = function () {
+    console.log("Get ROOMS!!!!");
+}
 
 export default mongoose.model("Hotel", HotelSchema);

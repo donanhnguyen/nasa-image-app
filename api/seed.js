@@ -92,7 +92,19 @@ const seededRooms = [
         name: "Small Room",
         price: 50,
         unvailableDates: [],
-        hotelId: '642343fc0f7aae8f424ba88b'
+        hotelId: '6425e5fa28f770e4303ff179'
+    },
+    {
+        name: "Medium Room",
+        price: 70,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff179'
+    },
+    {
+        name: "Large Room",
+        price: 100,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff179'
     },
 ]
 

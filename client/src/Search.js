@@ -9,6 +9,15 @@ function Search () {
     const navigate = useNavigate();
     const [allHotelsState, setAllHotelsState] = useState(null);
 
+    var allPlanets = [];
+    if (allHotelsState) {
+        for (let i in allHotelsState) {
+            if (!allPlanets.includes(allHotelsState[i].planet)) {
+                allPlanets.push(allHotelsState[i].planet);
+            }
+        }
+    }
+
     useEffect(() => {
         Axios.get(`http://localhost:8800/api/hotels/`)
             .then((response) => {
@@ -39,11 +48,11 @@ function Search () {
 
     return (
         <div className="App">
-        <header className="App-header">
+       
 
 
             {/* search bar here */}
-            <SearchBar />
+            <SearchBar allPlanets={allPlanets}/>
     
                     
       
@@ -58,7 +67,6 @@ function Search () {
             </div>
 
 
-        </header>
       </div>
     )
 }

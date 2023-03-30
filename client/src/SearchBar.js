@@ -2,21 +2,19 @@ import { useState } from "react";
 import DatePicker from 'react-datepicker';
 
 
-function SearchBar () {
+function SearchBar (props) {
 
     const [startDate, setStartDate] = useState(new Date());
+    const {allPlanets} = props;
 
-        
+    
   return (
     <div className="search-bar-container">
         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
 
 
         <select>
-            <option>Tatooine</option>
-            <option>Hoth</option>
-            <option>Nar Shaddaa</option>
-
+          {allPlanets.map((planet, i) => <option key={planet+i}>{planet}</option>)}
         </select>
 
     </div>

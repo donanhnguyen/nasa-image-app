@@ -42,5 +42,6 @@ app.use('/api/hotels/', roomsRoute);
 app.listen(8800, () => {
     connect(); 
     // Hotel.insertMany(seededHotels);
+    // Room.insertMany(seededRooms);
     console.log("hey")
 })
