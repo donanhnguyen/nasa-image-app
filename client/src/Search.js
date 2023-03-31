@@ -2,13 +2,16 @@ import { useLocation, useNavigate, Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Axios from 'axios';
 import SearchBar from "./SearchBar";
+import Loader from './Loader';
 
 function Search () {
 
     const location = useLocation();
     const navigate = useNavigate();
     const [allHotelsState, setAllHotelsState] = useState(null);
-
+    const [searchResultsReady, setSearchResultsReady] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+ 
     var allPlanets = [];
     if (allHotelsState) {
         for (let i in allHotelsState) {
@@ -38,7 +41,7 @@ function Search () {
                         key={hotel.name + index}>
                         <h1>{hotel.name}</h1>
                         <h1>Planet: {hotel.planet}</h1>
-                        <img className="hotel-pic" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
+                        <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
                     </div>
                 )
             })
@@ -52,17 +55,32 @@ function Search () {
 
 
             {/* search bar here */}
-            <SearchBar allPlanets={allPlanets}/>
+            <SearchBar 
+                allPlanets={allPlanets}
+                setSearchResultsReady={setSearchResultsReady}
+                searchResultsReady={searchResultsReady}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+            />
     
                     
-      
-        
+            
 
 
             {/* display all hotels */}
             <div className="search-hotels-container">
 
-                {displayAllHotels()}
+                {isLoading ?
+                    <Loader/> 
+                    :
+                    <div></div>
+                }
+
+                { searchResultsReady?
+                    displayAllHotels()
+                    :
+                    <div></div>
+                }
 
             </div>
 

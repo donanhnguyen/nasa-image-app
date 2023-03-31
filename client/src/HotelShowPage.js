@@ -1,11 +1,14 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import Axios from 'axios';
+import GlobalContext from './GlobalContext';
 
 function HotelShowPage () {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const contextInfo = useContext(GlobalContext);
+    const {currentUserState, setCurrentUserState} = contextInfo;
 
     const [hotelRoomsState, setHotelRoomsState] = useState([]);
 
@@ -24,7 +27,16 @@ function HotelShowPage () {
                 <div className='single-room-displayed' key={room + i}>
                     <h1>{room.name}</h1>
                     <h1>${room.price}</h1>
-                    <button>Book</button>
+
+                    {/* show if the room is avail here or not, based on unavailableDates array */}
+
+                    {
+                        currentUserState ? 
+                        <button>Book</button> 
+                        : 
+                        <p style={{color: 'red', fontSize: '1.3rem'}}>Please log in before booking.</p>
+                    }
+                    
                 </div>
             )
         })
@@ -37,7 +49,7 @@ function HotelShowPage () {
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>
                 <p>{hotel.description}</p>
-                <img className="hotel-pic" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
+                <img className="hotel-pic-in-show-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
 
                 {/* display rooms */}
                 <div className='displayed-rooms-container'>
