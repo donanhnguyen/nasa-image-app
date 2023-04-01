@@ -20,6 +20,10 @@ function HotelListing (props) {
         return res;   
     }
 
+    function countHowManyAvailableRooms () {
+        return <p># of avail. rooms here</p>
+    }
+
     return (
         <div onClick={() => navigateToHotelShowPage(hotel)} 
             className="single-hotel-displayed" 
@@ -28,12 +32,19 @@ function HotelListing (props) {
             <h1>Planet: {hotel.planet}</h1>
             <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
             <h1>
-                Rooms starting at $
+                Rooms starting at 
                 {
                     roomsState.length !== 0 ?
-                    getStartingPrice()
+                    <p className="price">$ {getStartingPrice()} per night</p> 
                     :
                     ""
+                }
+            
+            </h1>
+            <h1>
+                {/* show how many avail rooms here */}
+                {
+                    countHowManyAvailableRooms()
                 }
             </h1>
         </div>

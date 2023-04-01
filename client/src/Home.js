@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
-
+import './cardflip.css';
 
 function Home () {
 
@@ -30,13 +30,18 @@ function Home () {
     function displayPlanets () {
         const displayedPlanets = allPlanets.map((planet) => {
             return (
-                <div key={planet}
-                    className='single-planet-container'>
-                    <p>{planet}</p>
-                    <img className='single-planet-image'
-                        src={require(`../pics/${planet.split(' ').join('')}.jpg`)}
-                    >
-                    </img>
+                <div class="flip-card single-planet-container">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src={require(`../pics/${planet.split(' ').join('')}.jpg`)} 
+                        alt={planet} 
+                        className="single-planet-image"
+                    />
+                    </div>
+                    <div class="flip-card-back">
+                        <h1>{planet}</h1>
+                    </div>
+                </div>
                 </div>
             )
         })
@@ -53,7 +58,9 @@ function Home () {
             }
 
             {/* display all hotel planets here */}
+            <h1>Browse by planets:</h1>
             <div className='displayed-planets-container'>
+                
                  {displayPlanets()}
             </div>
            

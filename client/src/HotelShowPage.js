@@ -26,7 +26,7 @@ function HotelShowPage () {
             return (
                 <div className='single-room-displayed' key={room + i}>
                     <h1>{room.name}</h1>
-                    <h1>${room.price}</h1>
+                    <h1 className='price'>${room.price}</h1>
 
                     {/* show if the room is avail here or not, based on unavailableDates array */}
 
@@ -34,7 +34,7 @@ function HotelShowPage () {
                         currentUserState ? 
                         <button>Book</button> 
                         : 
-                        <p style={{color: 'red', fontSize: '1.3rem'}}>Please log in before booking.</p>
+                        <p>Please log in before booking.</p>
                     }
                     
                 </div>
@@ -43,15 +43,26 @@ function HotelShowPage () {
         return displayedRooms;
     }
 
+    function backtoresults () {
+        navigate('/search');
+    }
+
     return (
         <div className='App'>
             <div className='App-header'>
+                
+                <button onClick={backtoresults}
+                className='btn btn-danger'>Back to search results</button>
+
+                <br/>
+
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>
                 <p>{hotel.description}</p>
                 <img className="hotel-pic-in-show-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
 
                 {/* display rooms */}
+                <p>Rooms:</p>
                 <div className='displayed-rooms-container'>
                     {displayRooms()}
                 </div>

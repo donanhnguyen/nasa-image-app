@@ -84,8 +84,9 @@ a:hover {
   cursor: pointer;
 }
 .single-planet-image {
-  height: 200px;
-  width: 90%;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .search-hotels-container {
@@ -156,5 +157,16 @@ a:hover {
   border-radius: 20px;
   height: 220px;
   width: 220px;
-  margin: 10px;
+  margin: 5px;
+}
+.price {
+  color: green;
+  font-weight: bold;
+}
+.single-room-displayed h1 {
+  font-size: 1.9rem;
+}
+.single-room-displayed p {
+  color: red;
+  font-size: 1.2rem;
 }

@@ -88,23 +88,287 @@ const seededHotels = [
 ]
 
 const seededRooms = [
+    // tatooine kings hut
+    // {
+    //     name: "Small Room",
+    //     price: 50,
+    //     unvailableDates: [],
+    //     hotelId: '6425e5fa28f770e4303ff179'
+    // },
+    // {
+    //     name: "Medium Room",
+    //     price: 70,
+    //     unvailableDates: [],
+    //     hotelId: '6425e5fa28f770e4303ff179'
+    // },
+    // {
+    //     name: "Large Room",
+    //     price: 100,
+    //     unvailableDates: [],
+    //     hotelId: '6425e5fa28f770e4303ff179'
+    // },
+
+    // tatooine medium hut
     {
         name: "Small Room",
         price: 50,
         unvailableDates: [],
-        hotelId: '6425e5fa28f770e4303ff179'
+        hotelId: '6425e5fa28f770e4303ff17a'
+    },
+    {
+        name: "Medium Room 1",
+        price: 70,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17a'
+    },
+    {
+        name: "Medium Room 2",
+        price: 75,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17a'
+    },
+    // owen lars farm house
+    {
+        name: "The whole farm house",
+        price: 120,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17b'
+    },
+    // hoth major base hotel
+    {
+        name: "Small Room",
+        price: 50,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17c'
     },
     {
         name: "Medium Room",
         price: 70,
         unvailableDates: [],
-        hotelId: '6425e5fa28f770e4303ff179'
+        hotelId: '6425e5fa28f770e4303ff17c'
     },
     {
         name: "Large Room",
+        price: 85,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17c'
+    },
+    {
+        name: "Super Room",
+        price: 120,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17c'
+    },
+    // Aurek Base
+    {
+        name: "Small Room",
+        price: 50,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17d'
+    },
+    {
+        name: "Medium Room",
+        price: 70,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17d'
+    },
+    // hoth mini hut
+    {
+        name: "Entire Hut",
+        price: 60,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17e'
+    },
+    // hoth ball hotel
+    {
+        name: "Small Room",
+        price: 45,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17f'
+    },
+    {
+        name: "Medium Room",
+        price: 65,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff17f'
+    },
+    // nar shaddaa stronghold
+    {
+        name: "Small Room",
+        price: 50,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff180'
+    },
+    {
+        name: "Medium Room",
+        price: 60,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff180'
+    },
+    {
+        name: "Loft",
+        price: 150,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff180'
+    },
+    {
+        name: "Penthouse",
+        price: 200,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff180'
+    },
+    // nar shaddaa sky condo
+    {
+        name: "Entire condo",
+        price: 230,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff181'
+    },
+    // coruscant stronghold
+    {
+        name: "Small Room",
+        price: 50,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff182'
+    },
+    {
+        name: "Medium Room",
+        price: 60,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff182'
+    },
+    {
+        name: "Loft",
+        price: 150,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff182'
+    },
+    {
+        name: "Penthouse",
+        price: 200,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff182'
+    },
+    // alderaan stronghold
+    {
+        name: "Small Room",
+        price: 70,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff183'
+    },
+    {
+        name: "Medium Room",
+        price: 90,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff183'
+    },
+    {
+        name: "Queen's room",
+        price: 120,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff183'
+    },
+    {
+        name: "King's room",
+        price: 200,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff183'
+    },
+    // house alde
+    {
+        name: "Small Room",
+        price: 75,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff184'
+    },
+    {
+        name: "Medium Room",
+        price: 90,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff184'
+    },
+    // alderaan royal palace
+    {
+        name: "Royal basic room",
         price: 100,
         unvailableDates: [],
-        hotelId: '6425e5fa28f770e4303ff179'
+        hotelId: '6425e5fa28f770e4303ff185'
+    },
+    {
+        name: "Royal advanced room",
+        price: 150,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff185'
+    },
+    {
+        name: "Room of the royal king",
+        price: 200,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff185'
+    },
+    // endor treehouse village
+    {
+        name: "Treehouse 1",
+        price: 30,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff186'
+    },
+    {
+        name: "Treehouse 2",
+        price: 30,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff186'
+    },
+    {
+        name: "Treehouse 3",
+        price: 30,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff186'
+    },
+    // endor imperial base
+    {
+        name: "Imperial room 1",
+        price: 30,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff187'
+    },
+    {
+        name: "Imperial room 2",
+        price: 35,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff187'
+    },
+    {
+        name: "Imperial room 3",
+        price: 40,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff187'
+    },
+    // Manaan stronghold
+    {
+        name: "Basic ocean room",
+        price: 100,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff188'
+    },
+    {
+        name: "Advanced ocean room",
+        price: 125,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff188'
+    },
+    {
+        name: "Supreme ocean loft",
+        price: 250,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff188'
+    },
+    // manaan ocean house
+    {
+        name: "Entire ocean-front house",
+        price: 350,
+        unvailableDates: [],
+        hotelId: '6425e5fa28f770e4303ff189'
     },
 ]
 
