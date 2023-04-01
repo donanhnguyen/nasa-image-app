@@ -7,7 +7,9 @@ function SearchBar (props) {
   const [startDate, setStartDate] = useState(new Date());
   const {allPlanets, 
     setSearchResultsReady,
-    setIsLoading
+    setIsLoading,
+    chosenPlanetState,
+    setChosenPlanetState
   } = props;
 
     
@@ -18,7 +20,11 @@ function SearchBar (props) {
     setTimeout(() => {
       setIsLoading(false);
       setSearchResultsReady(true);
-    }, 3000)
+    }, 1000)
+  }
+
+  function setPlanetFilter (e) {
+    setChosenPlanetState(e.target.value)
   }
 
   return (
@@ -30,9 +36,11 @@ function SearchBar (props) {
         <label htmlFor='endDate'>End Date</label>
         <input id='endDate' type='date'></input>
 
-        <select>
-          <option defaultValue="None">Planet</option>
-          {allPlanets.map((planet, i) => <option key={planet+i}>{planet}</option>)}
+        <label htmlFor='planet'>Filter by Planet</label>
+        <select id='planet' onChange={(e) => {setPlanetFilter(e)}}>
+          <option disabled selected value>Planet</option>
+          <option>None</option>
+          {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}
         </select>
 
         <button onClick={applySearchFilters}

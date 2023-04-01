@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Axios from 'axios';
 import SearchBar from "./SearchBar";
 import Loader from './Loader';
+import HotelListing from "./HotelListing";
 
 function Search () {
 
@@ -11,7 +12,9 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
- 
+    const [chosenPlanetState, setChosenPlanetState] = useState(null);
+
+
     var allPlanets = [];
     if (allHotelsState) {
         for (let i in allHotelsState) {
@@ -33,26 +36,35 @@ function Search () {
     }
 
     function displayAllHotels () {
-        if (allHotelsState) {
-            var displayAllHotels = allHotelsState.map((hotel, index) => {
-                return (
-                    <div onClick={() => navigateToHotelShowPage(hotel)} 
-                        className="single-hotel-displayed" 
-                        key={hotel.name + index}>
-                        <h1>{hotel.name}</h1>
-                        <h1>Planet: {hotel.planet}</h1>
-                        <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
-                    </div>
-                )
+        var hotelsArrayBeforeFilters = [];
+        
+        if (chosenPlanetState && chosenPlanetState !== "None") {
+            hotelsArrayBeforeFilters = allHotelsState.filter((hotel) => {
+                return chosenPlanetState === hotel.planet;
             })
-            return displayAllHotels;
+        } else {
+            hotelsArrayBeforeFilters = allHotelsState;
         }
+
+        // apply available rooms filter here?
+        
+        var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
+            return (
+                <HotelListing
+                    key={hotel.name + index}
+                    hotel={hotel}
+                    navigateToHotelShowPage={navigateToHotelShowPage}
+                />
+            )
+        })
+
+        return displayAllHotels;
+        
     }
 
     return (
         <div className="App">
        
-
 
             {/* search bar here */}
             <SearchBar 
@@ -61,11 +73,11 @@ function Search () {
                 searchResultsReady={searchResultsReady}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
+                chosenPlanetState={chosenPlanetState}
+                setChosenPlanetState={setChosenPlanetState}
             />
     
                     
-            
-
 
             {/* display all hotels */}
             <div className="search-hotels-container">
@@ -76,7 +88,13 @@ function Search () {
                     <div></div>
                 }
 
-                { searchResultsReady?
+                { searchResultsReady ?
+                    <h1 style={{color: 'white'}}>{displayAllHotels().length} results:</h1>
+                    :
+                    <div></div>
+                }
+
+                { searchResultsReady ?
                     displayAllHotels()
                     :
                     <div></div>
