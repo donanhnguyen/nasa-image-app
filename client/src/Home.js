@@ -30,15 +30,15 @@ function Home () {
     function displayPlanets () {
         const displayedPlanets = allPlanets.map((planet) => {
             return (
-                <div class="flip-card single-planet-container">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
+                <div key={planet} className="flip-card single-planet-container">
+                <div className="flip-card-inner">
+                    <div className="flip-card-front">
                     <img src={require(`../pics/${planet.split(' ').join('')}.jpg`)} 
                         alt={planet} 
                         className="single-planet-image"
                     />
                     </div>
-                    <div class="flip-card-back">
+                    <div className="flip-card-back">
                         <h1>{planet}</h1>
                     </div>
                 </div>
@@ -50,12 +50,12 @@ function Home () {
 
     return (
         <div className="App-header">
-            <h1>Welcome to GalaxyStays!</h1>
-            {currentUserState ? 
-                <h1>Logged in as {currentUserState.username}</h1> 
-                : 
-                <h1>You are not logged in.</h1>
-            }
+            <h1 className='main-header'>
+                Welcome to GalaxyStays
+            </h1>
+            
+            <br></br>
+
 
             {/* display all hotel planets here */}
             <h1>Browse by planets:</h1>

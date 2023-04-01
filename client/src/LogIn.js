@@ -3,7 +3,7 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
-
+import Modal from './Modal';
 
 function LogIn(props) {
 
@@ -61,7 +61,7 @@ function LogIn(props) {
     <div className="App">
       <header className="App-header">
 
-        <h1>Log in page</h1>
+        <h1>Log in</h1>
 
         {/* display error messages */}
         <div className='error-messages'>
@@ -73,6 +73,8 @@ function LogIn(props) {
             <input onChange={(e) => setPassword(e)} type='text' placeholder='password'></input>
             <button className='btn btn-primary btn-lg' type='submit'>Log In</button>
         </form>
+
+            
 
       </header>
     </div>

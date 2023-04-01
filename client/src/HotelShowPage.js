@@ -54,8 +54,6 @@ function HotelShowPage () {
                 <button onClick={backtoresults}
                 className='btn btn-danger'>Back to search results</button>
 
-                <br/>
-
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>
                 <p>{hotel.description}</p>

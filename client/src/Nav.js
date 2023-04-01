@@ -8,6 +8,7 @@ import GlobalContext from './GlobalContext';
 function Nav (props) {
 
   const contextInfo = useContext(GlobalContext);
+  const {currentUserState} = contextInfo;
   const navigate = useNavigate();
 
   function logOut() {
@@ -23,7 +24,7 @@ function Nav (props) {
   function displayLogInOrLogOutButton () {
     if (contextInfo.currentUserState) {
       return (
-        <button onClick={logOut}>Log Out</button>
+        <button className='btn btn-danger' onClick={logOut}>Log Out</button>
       )
     } else {
       return (
@@ -43,7 +44,12 @@ function Nav (props) {
   return (
 
         <nav className='nav-bar'>
-
+            {
+              currentUserState ?
+              <p className='loggedin'>Welcome, {currentUserState.username}</p>
+              :
+              <p className='loggedin'>Not Logged In</p>
+            }
             <ul>
                 <li>
                   {displayLogInOrLogOutButton()}
