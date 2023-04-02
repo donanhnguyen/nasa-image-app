@@ -11,10 +11,8 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    dateDuration: {
-        type: Array,
-        required: true,
-        default: []
+    dates: {
+        type: [{type: String}]
     },
     numberOfGuests: {
         type: Number,

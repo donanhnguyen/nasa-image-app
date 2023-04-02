@@ -32,7 +32,7 @@ function SignUp (props) {
     function submitRegister (e) {
         e.preventDefault();
         if (formState.username === "" || formState.password === "") {
-            alert("Fields can't be blank!");
+            setErrorsState("Fields can't be blank!");
         } else {
           Axios.post(`http://localhost:8800/api/auth/register/`, formState)
             .then((response) => {
@@ -62,19 +62,29 @@ function SignUp (props) {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>sign up page</h1>
 
-
-        {  /* display error messages */}
+        <div className="login-box">
+        <h2>Sign Up</h2>   
+        {/* display error messages */}
         <div className='error-messages'>
             {errorsState}
         </div>
-
-        <form onSubmit={submitRegister}>
-            <input onChange={(e) => setUsername(e)} type='text' placeholder='username'></input>
-            <input onChange={(e) => setPassword(e)} type='text' placeholder='password'></input>
-            <button className='btn btn-primary btn-lg'type='submit'>Register</button>
-        </form>
+            <form onSubmit={submitRegister}>
+                <div className="user-box">
+                <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
+                </div>
+                <div className="user-box">
+                <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
+                </div>
+                <button type='submit'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Register
+                </button>
+            </form>
+        </div>
 
       </header>
     </div>

@@ -4,6 +4,7 @@ import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import Modal from './Modal';
+import './LoginForm.css';
 
 function LogIn(props) {
 
@@ -30,6 +31,9 @@ function LogIn(props) {
 
     function logIn (e) {
         e.preventDefault();
+        if (formState.username === "" || formState.password === "") {
+            setErrorsState("Invalid Login.")
+        }
         Axios.get(`http://localhost:8800/api/users/${formState.username}/`)
             .then((response) => {
                 if (response.data.password === formState.password) {
@@ -41,7 +45,7 @@ function LogIn(props) {
                 }
             })
             .catch((error) => {
-                setErrorsState(error.response.data)
+                setErrorsState("Invalid Login")
             }) 
     }
 
@@ -61,21 +65,29 @@ function LogIn(props) {
     <div className="App">
       <header className="App-header">
 
-        <h1>Log in</h1>
-
+        <div className="login-box">
+        <h2>Log In</h2>   
         {/* display error messages */}
         <div className='error-messages'>
             {errorsState}
         </div>
-
-        <form onSubmit={logIn}>
-            <input onChange={(e) => setUsername(e)} type='text' placeholder='username'></input>
-            <input onChange={(e) => setPassword(e)} type='text' placeholder='password'></input>
-            <button className='btn btn-primary btn-lg' type='submit'>Log In</button>
-        </form>
-
+            <form onSubmit={logIn}>
+                <div className="user-box">
+                <input onChange={(e) => setUsername(e)} type="text" placeholder='username' required=""/>
+                </div>
+                <div className="user-box">
+                <input onChange={(e) => setPassword(e)} type="password" placeholder='password' required=""/>
+                </div>
+                <button type='submit'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Log In
+                </button>
+            </form>
+        </div>
             
-
       </header>
     </div>
   );

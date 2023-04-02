@@ -4,6 +4,7 @@ import Axios from 'axios';
 import {Link} from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
+import Modal from './Modal';
 
 function Nav (props) {
 
@@ -13,22 +14,35 @@ function Nav (props) {
 
   function logOut() {
     // confirm thru message
-    if (window.confirm("Do you really want to Log Out?")) {
+    // if (window.confirm("Do you really want to Log Out?")) {
        // set user state to null
       contextInfo.setCurrentUserState(null);
       // navigate back to home
       navigate('/');
-    }
+    // }
   }
 
   function displayLogInOrLogOutButton () {
     if (contextInfo.currentUserState) {
       return (
-        <button className='btn btn-danger' onClick={logOut}>Log Out</button>
+        // <li><button className='btn btn-danger' onClick={logOut}>Log Out</button></li>
+        <li>        
+          <div class="modal-container">
+          <input id="modal-toggle" type="checkbox"/>
+          <button for='modal-toggle'>Log Out</button>
+          <div class="modal-backdrop">
+              <div class="modal-content">
+              <label class="modal-close" for="modal-toggle">X</label>
+              <h1>Are you sure you want to log out?</h1>
+              <label onClick={logOut}class="modal-close button" for="modal-toggle">Yes</label>
+              </div>
+          </div>
+          </div>
+        </li>
       )
     } else {
       return (
-        <Link to='/login'>Log In</Link>
+        <li><Link to='/login'>Log In</Link></li>
       )
     }
   }
@@ -36,7 +50,15 @@ function Nav (props) {
   function displaySignUpButtonOrNot () {
     if (!contextInfo.currentUserState) {
       return (
-        <Link to='/signup'>Sign Up</Link>
+        <li><Link to='/signup'>Sign Up</Link></li>
+      )
+    } 
+  }
+
+  function displayBookingsPageOrNot () {
+    if (contextInfo.currentUserState) {
+      return (
+        <li><Link to='/myBookings'>My Bookings</Link></li>
       )
     } 
   }
@@ -51,18 +73,19 @@ function Nav (props) {
               <p className='loggedin'>Not Logged In</p>
             }
             <ul>
-                <li>
-                  {displayLogInOrLogOutButton()}
-                </li>
-                <li>
-                  {displaySignUpButtonOrNot()}
-                </li>
+ 
                 <li>
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
                   <Link to='/search'>Search</Link>
                 </li>
+
+                {displayBookingsPageOrNot()}
+                
+                {displayLogInOrLogOutButton()}
+                
+                {displaySignUpButtonOrNot()}
             </ul>
 
         </nav>
