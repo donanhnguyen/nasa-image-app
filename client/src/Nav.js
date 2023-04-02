@@ -78,7 +78,7 @@ function Nav (props) {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <Link to='/search'>Search</Link>
+                  <Link to='/search'>Search Hotels</Link>
                 </li>
 
                 {displayBookingsPageOrNot()}

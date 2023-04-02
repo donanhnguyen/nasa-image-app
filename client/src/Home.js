@@ -91,26 +91,26 @@ function Home () {
 
     return (
         <div className="App-header">
-            <h1 className='main-header'>
-                Welcome to GalaxyStays
-            </h1>
-            
-            <br></br>
 
-            <h1 className='featured-hotels-heading'>Featured hotels:</h1>
-            <div className='featured-hotels-container'>
-                {displayFeaturedHotels()}
-            </div>
+                <h1 className='main-header'>
+                    GalaxyStays.com
+                </h1>
+                
+                <br></br>
 
-            <br></br>
+                <h1 className='featured-hotels-heading'>Featured hotels:</h1>
+                <div className='featured-hotels-container'>
+                    {displayFeaturedHotels()}
+                </div>
 
-            {/* display all hotel planets here */}
-            <h1>Browse by planets:</h1>
-            <div className='displayed-planets-container'>
-                 {displayPlanets()}
-            </div>
+                <br></br>
+
+                {/* display all hotel planets here */}
+                <h1>Browse by planets:</h1>
+                <div className='displayed-planets-container'>
+                    {displayPlanets()}
+                </div>
            
-
         </div>
     )
 }

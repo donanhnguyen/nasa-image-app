@@ -1,18 +1,16 @@
 import { useState } from "react";
-import DatePicker from 'react-datepicker';
-
+import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 
 function SearchBar (props) {
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [dateRange, setDateRange] = useState([null, null]);
+
   const {allPlanets, 
     setSearchResultsReady,
     setIsLoading,
     chosenPlanetState,
     setChosenPlanetState
   } = props;
-
-    
 
   function applySearchFilters () {
     setIsLoading(true);
@@ -27,16 +25,17 @@ function SearchBar (props) {
     setChosenPlanetState(e.target.value)
   }
 
+  function handleSetDateRange (value) {
+    setDateRange([value[0], value[1]]);
+  }
+
   return (
     <div className="search-bar-container">
-        {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /> */}
 
-        <label htmlFor='startDate'>Start Date</label>
-        <input id='startDate' type='date'></input>
-        <label htmlFor='endDate'>End Date</label>
-        <input id='endDate' type='date'></input>
+        <div>
+          <DateRangePicker clearIcon={null} format='MM/dd/y'className={'date-picker'} onChange={ (value) => {handleSetDateRange(value)} } value={dateRange} />
+        </div>
 
-        <label htmlFor='planet'>Filter by Planet</label>
         <select id='planet' onChange={(e) => {setPlanetFilter(e)}}>
           <option disabled selected value>Planet</option>
           <option>None</option>
