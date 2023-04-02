@@ -91,18 +91,42 @@ a:hover {
 }
 
 /*  */
-
-.displayed-planets-container {
+.featured-hotels-heading {
+  font-family: 'Allerta Stencil';
+  font-size: 4rem;
+  font-weight: bold;
+}
+.featured-hotels-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+.single-featured-hotel {
+  text-align: center;
+  margin: 10px;
+}
+.single-featured-hotel p {
+  text-align: center;
+  margin: 0;
+  font-size: 0.9em;
+}
+.hotel-pic-in-featured-page {
+  height: 80%;
+  width: 100%;
+  border-radius: 20px;
+}
+.displayed-planets-container {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .single-planet-container {
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 350px;
   margin: 5px;
   border-radius: 20px;
-  background-color: rgb(1, 34, 34);
+  background-color: rgba(0, 0, 0, 0.773);
   opacity: 90%;
 }
 .single-planet-container:hover {
@@ -110,8 +134,8 @@ a:hover {
   cursor: pointer;
 }
 .single-planet-image {
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 87%;
   border-radius: 20px;
 }
 
@@ -192,7 +216,7 @@ a:hover {
   display: flex;
   float: right;
   margin-top: 10px;
-  margin-right: 10px;
+  margin-right: 15px;
   font-size: 1.5rem;
   color: white;
 }
