@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import GlobalContext from './GlobalContext';
 
@@ -64,7 +64,7 @@ function SearchBar (props) {
           <DateRangePicker clearIcon={null} format='MM/dd/y'className={'date-picker'} onChange={ (value) => {handleSetDateRange(value)} } value={dateRange} />
         </div>
 
-        <select id='planet' onChange={(e) => {setPlanetFilter(e)}}>
+        <select id='planet' onChange={(e) => {setPlanetFilter(e)}} value={chosenPlanetState}>
           <option disabled selected value>Planet</option>
           <option>None</option>
           {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}

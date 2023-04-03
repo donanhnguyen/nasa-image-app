@@ -170,17 +170,20 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.636);
   color: rgb(248, 251, 255);
   margin: auto;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  height: 412px;
-  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.734);
+  margin-top: 18px;
+  margin-bottom: 18px;
+  height: auto;
+  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.499);
+}
+.image-part {
+  height: 100%;
 }
 .hotel-listing-info {
   text-align: center;
-  padding: 70px 0;
+  padding: 40px 0;
 }
 .hotel-listing-info h1 {
-  font-size: 1.9em;
+  font-size: 28px;
 }
 .single-hotel-listing-container:hover {
   background-color: rgba(4, 0, 44, 0.782);
@@ -188,7 +191,7 @@ a:hover {
 }
 .hotel-pic-in-search-page {
   width: 100%;
-  height: 99.2%;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -235,7 +238,7 @@ a:hover {
   min-height: 60px;
   font-size: 1.6em;
 }
-.search-bar-container > div, label, select {
+.search-bar-container > div, select {
   margin-right: 10px;
   margin-left: 10px;
   min-height: 100%;
@@ -301,9 +304,9 @@ a:hover {
   width: 100%;
 }
 .single-room-displayed {
-  background-color: antiquewhite;
-  color: black;
-  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.788);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0.47);
   border-radius: 20px;
   height: 220px;
   width: 220px;
@@ -320,6 +323,35 @@ a:hover {
   color: red;
   font-size: 1.2rem;
 }
+/* confirmation booking page */
+.confirmation-container {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.783);
+  width: 92%;
+  margin: auto;
+}
+.confirmation-container p {
+  font-size: 30px;
+  background-color: #008814e9;
+  color: rgb(255, 255, 255);
+  margin: 10px;
+}
+.hotel-pic-in-confirm-page {
+  width: 72%;
+  height: 600px;
+  border-radius: 10px;
+}
+/* isconfirmed */
+.isConfirmed-container {
+  background-color: rgba(0, 0, 0, 0.544);
+  margin: auto;
+  color: white;
+}
+.isConfirmed-container p {
+  font-size: 27px;
+}
+
+/* footer */
 .footer {
   display: block;
   font-size: 1.5em;

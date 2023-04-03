@@ -35,11 +35,19 @@ function HotelListing (props) {
         return numberOfAvailableRooms;
     }
 
-    return (
+    if (countHowManyAvailableRooms() > 0) {
+      return (
         <div onClick={() => navigateToHotelShowPage(hotel)} 
             className="single-hotel-listing-container" 
             >
-            <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
+
+            {/* 33.3% */}
+            <div className="image-part">
+                <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
+            </div>
+            
+            
+            {/* 66.6% */}
             <div className="hotel-listing-info">
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>
@@ -61,11 +69,13 @@ function HotelListing (props) {
                         countHowManyAvailableRooms()
                     }</p>
                 </h1>
-                
             </div>
             
         </div>
-    )
+        )  
+    }
+
+    
 }
 
 

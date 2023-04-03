@@ -9,7 +9,6 @@ function HotelShowPage () {
     const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
     const {currentUserState, 
-        setCurrentUserState, 
         isRoomAvailableOrNot, 
         dateRangeArray
     } = contextInfo;
@@ -25,17 +24,24 @@ function HotelShowPage () {
             })
     }, [])
 
-    function displayBookButtonAndIfItsAvailableOrNot (roomDates) {
+    function navigateToConfirmBookingPage (room) {
+        navigate('/ConfirmBookingPage', {state: {room: room, hotel: hotel} }); 
+    }
+
+    function displayBookButtonAndIfItsAvailableOrNot (room) {
     
-        if (currentUserState && dateRangeArray && isRoomAvailableOrNot(dateRangeArray, roomDates)) {
-            return <button className='btn btn-danger btn-lg'>Book</button>
-        } else if (!isRoomAvailableOrNot(dateRangeArray, roomDates)) {
+        if (currentUserState && dateRangeArray && isRoomAvailableOrNot(dateRangeArray, room.unavailableDates)) {
+            return <button 
+                        className='btn btn-danger btn-lg'
+                        onClick={() => {navigateToConfirmBookingPage(room)}}
+                    >Book
+                    </button>
+        } else if (!isRoomAvailableOrNot(dateRangeArray, room.unavailableDates)) {
             return <p style={{color: 'red'}}>Unavailable</p>
         } else {
             return <p>Please log in before booking.</p>
         }
-            
-        
+    
     }
 
     function displayRooms () {
@@ -47,7 +53,7 @@ function HotelShowPage () {
 
                     {/* show if the room is avail here or not, based on unavailableDates array */}
 
-                    {displayBookButtonAndIfItsAvailableOrNot(room.unavailableDates)}
+                    {displayBookButtonAndIfItsAvailableOrNot(room)}
 
                     
                 </div>

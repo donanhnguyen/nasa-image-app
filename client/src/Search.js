@@ -1,9 +1,11 @@
 import { useLocation, useNavigate, Link} from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Axios from 'axios';
 import SearchBar from "./SearchBar";
 import Loader from './Loader';
 import HotelListing from "./HotelListing";
+import GlobalContext from './GlobalContext';
+
 
 function Search () {
 
@@ -12,8 +14,7 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [chosenPlanetState, setChosenPlanetState] = useState(null);
-
+    const {chosenPlanetState, setChosenPlanetState} = useContext(GlobalContext);
 
     var allPlanets = [];
     if (allHotelsState) {

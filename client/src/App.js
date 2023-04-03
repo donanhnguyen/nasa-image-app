@@ -8,6 +8,7 @@ import Search from './Search';
 import Home from './Home';
 import MyBookings from './MyBookings';
 import HotelShowPage from './HotelShowPage';
+import ConfirmBookingPage from './ConfirmBookingPage';
 import { GlobalProvider } from './GlobalContext';
 import { Link, BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -29,7 +30,7 @@ function App() {
         <Route path='/search' element={ <Search /> }></Route>
         <Route path='/myBookings' element={ <MyBookings /> }></Route>
         <Route path='/hotel/:hotelId' element={ <HotelShowPage />}></Route>
-
+        <Route path='/ConfirmBookingPage' element={ <ConfirmBookingPage />}></Route>
       </Routes>
       </BrowserRouter>
 

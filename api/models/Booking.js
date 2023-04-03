@@ -7,6 +7,14 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    nameOfRoom: {
+        type: String,
+        required: true
+    },
+    totalPrice: {
+        type: Number,
+        required: true
+    },
     planet: {
         type: String,
         required: true
@@ -14,10 +22,6 @@ const BookingSchema = new mongoose.Schema({
     dates: {
         type: [{type: String}]
     },
-    numberOfGuests: {
-        type: Number,
-        required: true
-    }, 
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User",
