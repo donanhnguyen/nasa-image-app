@@ -1,8 +1,12 @@
 import { useLocation, useNavigate, Link} from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Axios from 'axios';
+import GlobalContext from './GlobalContext';
 
 function HotelListing (props) {
+
+    const contextInfo = useContext(GlobalContext);
+    const {dateRangeArray, isRoomAvailableOrNot} = contextInfo;
 
     const {hotel, navigateToHotelShowPage} = props;
     const [roomsState, setRoomsState] = useState([]);
@@ -21,32 +25,45 @@ function HotelListing (props) {
     }
 
     function countHowManyAvailableRooms () {
-        return <p># of avail. rooms here</p>
+        var numberOfAvailableRooms = 0;
+        for (let i in roomsState) {
+            let currentRoom = roomsState[i];
+            if (isRoomAvailableOrNot(dateRangeArray, currentRoom.unavailableDates)) {
+                numberOfAvailableRooms += 1;
+            }
+        }
+        return numberOfAvailableRooms;
     }
 
     return (
         <div onClick={() => navigateToHotelShowPage(hotel)} 
-            className="single-hotel-displayed" 
+            className="single-hotel-listing-container" 
             >
-            <h1>{hotel.name}</h1>
-            <h1>Planet: {hotel.planet}</h1>
             <img className="hotel-pic-in-search-page" src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}></img>
-            <h1>
-                Rooms starting at 
-                {
-                    roomsState.length !== 0 ?
-                    <p className="price">$ {getStartingPrice()} per night</p> 
-                    :
-                    ""
-                }
+            <div className="hotel-listing-info">
+                <h1>{hotel.name}</h1>
+                <h1>Planet: {hotel.planet}</h1>
+                
+                <h1>
+                    Rooms starting at 
+                    {
+                        roomsState.length !== 0 ?
+                        <p className="price">$ {getStartingPrice()} per night</p> 
+                        :
+                        ""
+                    }
+                
+                </h1>
+                {/* # of rooms available */}
+                <h1>
+                    Rooms available:
+                    <p style={{color: 'red'}}>{
+                        countHowManyAvailableRooms()
+                    }</p>
+                </h1>
+                
+            </div>
             
-            </h1>
-            <h1>
-                {/* show how many avail rooms here */}
-                {
-                    countHowManyAvailableRooms()
-                }
-            </h1>
         </div>
     )
 }

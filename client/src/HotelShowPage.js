@@ -8,7 +8,11 @@ function HotelShowPage () {
     const location = useLocation();
     const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
-    const {currentUserState, setCurrentUserState} = contextInfo;
+    const {currentUserState, 
+        setCurrentUserState, 
+        isRoomAvailableOrNot, 
+        dateRangeArray
+    } = contextInfo;
 
     const [hotelRoomsState, setHotelRoomsState] = useState([]);
 
@@ -21,6 +25,19 @@ function HotelShowPage () {
             })
     }, [])
 
+    function displayBookButtonAndIfItsAvailableOrNot (roomDates) {
+    
+        if (currentUserState && dateRangeArray && isRoomAvailableOrNot(dateRangeArray, roomDates)) {
+            return <button className='btn btn-danger btn-lg'>Book</button>
+        } else if (!isRoomAvailableOrNot(dateRangeArray, roomDates)) {
+            return <p style={{color: 'red'}}>Unavailable</p>
+        } else {
+            return <p>Please log in before booking.</p>
+        }
+            
+        
+    }
+
     function displayRooms () {
         const displayedRooms = hotelRoomsState.map((room, i) => {
             return (
@@ -30,12 +47,8 @@ function HotelShowPage () {
 
                     {/* show if the room is avail here or not, based on unavailableDates array */}
 
-                    {
-                        currentUserState ? 
-                        <button>Book</button> 
-                        : 
-                        <p>Please log in before booking.</p>
-                    }
+                    {displayBookButtonAndIfItsAvailableOrNot(room.unavailableDates)}
+
                     
                 </div>
             )
@@ -52,7 +65,7 @@ function HotelShowPage () {
             <div className='App-header'>
                 
                 <button onClick={backtoresults}
-                className='btn btn-danger'>Back to search results</button>
+                className='btn btn-danger back-to-search-results-button'>Back to search results</button>
 
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>

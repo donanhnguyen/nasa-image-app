@@ -29,7 +29,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  background-color: rgba(0, 0, 0, 0.262);
+  background-color: rgba(0, 0, 0, 0.139);
   width: 99%;
 }
 
@@ -99,7 +99,6 @@ a:hover {
 
 /*  */
 .home-container {
-
 }
 .featured-hotels-heading {
   font-family: 'Allerta Stencil';
@@ -107,6 +106,12 @@ a:hover {
   font-weight: bold;
 }
 .featured-hotels-container {
+  border: 0.5px solid rgba(255, 255, 255, 0.158);
+  border-radius: 5px;
+  padding: 100px;
+  background-color: rgba(0, 0, 0, 0.532);
+}
+.featured-hotels {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -133,7 +138,7 @@ a:hover {
 }
 .single-planet-container {
   height: 350px;
-  width: 350px;
+  width: 320px;
   margin: 5px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.773);
@@ -151,50 +156,95 @@ a:hover {
 
 .search-hotels-container {
  
-  width: 40%;
+  width: 80%;
   margin: auto;
  
 }
 .search-hotels-container h1 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
 }
-.single-hotel-displayed {
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 30px;
+.single-hotel-listing-container {
+  display: grid;
+  grid-template-columns: 33.3% auto;
+  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.636);
   color: rgb(248, 251, 255);
-  width: 70%;
   margin: auto;
-  margin-top: 9px;
-  margin-bottom: 9px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  height: 412px;
+  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.734);
 }
-.single-hotel-displayed:hover {
+.hotel-listing-info {
+  text-align: center;
+  padding: 70px 0;
+}
+.hotel-listing-info h1 {
+  font-size: 1.9em;
+}
+.single-hotel-listing-container:hover {
   background-color: rgba(4, 0, 44, 0.782);
   cursor: pointer;
 }
 .hotel-pic-in-search-page {
   width: 100%;
-  height: 300px;
-  border-radius: 30px;
+  height: 99.2%;
+  border-radius: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+  .search-hotels-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 635px) {
+  .single-hotel-listing-container {
+    height: 200px;
+  }
+  .hotel-listing-info {
+    text-align: center;
+    padding: 0 0;
+  }
+  .hotel-listing-info h1 {
+    font-size: 1.1em;
+  }
+  .search-bar-container > div, label, select, button {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 460px) {
+  .search-bar-container {
+    
+  }
+}
+/*  */
 .hotel-pic-in-show-page {
   width: 60%;
   height: 450px;
   border-radius: 30px;
 }
+.back-to-search-results-button {
+  margin-bottom: 20px;
+}
 .search-bar-container {
   display: flex;
   justify-content: center;
-  background: linear-gradient(black, rgb(0, 0, 25));
+  background: linear-gradient(black, rgba(0, 0, 25, 0.67));
   flex-wrap: wrap;
   width: 100%;
-  height: 80px;
-  font-size: 1.8em;
+  min-height: 60px;
+  font-size: 1.6em;
 }
-.search-bar-container > div, label, select, button {
+.search-bar-container > div, label, select {
   margin-right: 10px;
   margin-left: 10px;
-  height: 100%;
+  min-height: 100%;
+}
+.search-bar-button {
+  min-height: 100%;
+}
+.search-bar-container select {
+  height: auto;
 }
 .date-picker {
   background-color: white;
@@ -208,6 +258,7 @@ a:hover {
   font-size: 1.5rem;
 }
 .nav-bar {
+  min-height: 50px;
   background-color: rgb(0, 34, 64);
   animation: wheelBackgroundColor 12s infinite;
 }
@@ -232,8 +283,7 @@ a:hover {
 .nav-bar ul li {
   font-size: 2rem;
   margin: 10px;
-  padding: 5px;
-  background-color: rgba(9, 4, 43, 0.707);
+  padding: 20px;
   border-radius: 10px;
 }
 .loggedin {
@@ -269,4 +319,11 @@ a:hover {
 .single-room-displayed p {
   color: red;
   font-size: 1.2rem;
+}
+.footer {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.647);
+  color: white
 }

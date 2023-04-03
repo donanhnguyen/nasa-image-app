@@ -4,6 +4,7 @@ import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './cardflip.css';
+import Footer from './Footer';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -90,7 +91,8 @@ function Home () {
     }
 
     return (
-        <div className="App-header">
+        <div>
+            <div className="App-header">
 
                 <h1 className='main-header'>
                     GalaxyStays.com
@@ -98,10 +100,13 @@ function Home () {
                 
                 <br></br>
 
-                <h1 className='featured-hotels-heading'>Featured hotels:</h1>
                 <div className='featured-hotels-container'>
-                    {displayFeaturedHotels()}
+                    <h1 className='featured-hotels-heading'>Featured hotels:</h1>
+                    <div className='featured-hotels'>
+                        {displayFeaturedHotels()}
+                    </div>
                 </div>
+
 
                 <br></br>
 
@@ -111,7 +116,11 @@ function Home () {
                     {displayPlanets()}
                 </div>
            
+                
         </div>
+        <Footer/>
+        </div>
+        
     )
 }
 
