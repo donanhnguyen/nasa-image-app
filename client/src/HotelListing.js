@@ -6,7 +6,7 @@ import GlobalContext from './GlobalContext';
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot, setHotelsInfoObject, hotelsInfoObject} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot} = contextInfo;
 
     const {hotel, navigateToHotelShowPage} = props;
     const [roomsState, setRoomsState] = useState([]);
@@ -64,10 +64,7 @@ function HotelListing (props) {
                 </h1>
                 {/* # of rooms available */}
                 <h1>
-                    Rooms available:
-                    <p style={{color: 'red'}}>{
-                        countHowManyAvailableRooms()
-                    }</p>
+                    {dateRangeArray ?  <p style={{color: 'red'}}>Rooms Available: {countHowManyAvailableRooms()}</p> : <p style={{color: 'red'}}>Select dates to see available rooms.</p>}
                 </h1>
             </div>
             

@@ -16,12 +16,11 @@ function Search () {
     const [isLoading, setIsLoading] = useState(false);
     const {chosenPlanetState, 
         setChosenPlanetState,
-        hotelsInfoObject,
         dateRangeArray,
+        dateRange,
     } = useContext(GlobalContext);
 
     const searchResultsContainerRef = useRef(null);
-    const resultsCountRef = useRef();
 
     var allPlanets = [];
     if (allHotelsState) {
@@ -39,31 +38,46 @@ function Search () {
             })
     }, [])
 
+    useEffect(() => {
+        setIsLoading(true);
+        setSearchResultsReady(false);
+        setTimeout(() => {
+          setIsLoading(false);
+          setSearchResultsReady(true);
+        }, 1000)
+    }, [chosenPlanetState, dateRange])
+
     function navigateToHotelShowPage (hotel) {
-        navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel} } );
+        if (dateRangeArray) {
+            navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel} } );  
+        } else {
+            alert("Please select your date range first.");
+        }
     }
 
     function displayAllHotels () {
         var hotelsArrayBeforeFilters = [];
         
-        if (chosenPlanetState && chosenPlanetState !== "None") {
+        if (chosenPlanetState && chosenPlanetState !== "No Filter" && allHotelsState) {
             hotelsArrayBeforeFilters = allHotelsState.filter((hotel) => {
                 return chosenPlanetState === hotel.planet;
             })
         } else {
             hotelsArrayBeforeFilters = allHotelsState;
         }
+        if (allHotelsState) {
+            var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
+                return (
+                    <HotelListing
+                        key={hotel.name + index}
+                        hotel={hotel}
+                        navigateToHotelShowPage={navigateToHotelShowPage}
+                    />
+                )
+            })  
+            return displayAllHotels;  
+        }
 
-        var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
-            return (
-                <HotelListing
-                    key={hotel.name + index}
-                    hotel={hotel}
-                    navigateToHotelShowPage={navigateToHotelShowPage}
-                />
-            )
-        })  
-        return displayAllHotels; 
     }
 
     return (
@@ -91,19 +105,16 @@ function Search () {
                     <div></div>
                 }
 
-                {/* { searchResultsReady ?
-                    <h1 style={{color: 'white'}}>{resultsCountRef.current} results:</h1>
+                { searchResultsReady ?
+                    <h1 style={{color: 'white'}}>{searchResultsContainerRef.current.children.length} results:</h1>
                     :
                     <div></div>
-                } */}
+                }
 
-                <div ref={searchResultsContainerRef} className="results-container">
-                    { searchResultsReady ?
-                        displayAllHotels()
-                        :
-                        <div></div>
-                    }
-                    
+                <div ref={searchResultsContainerRef} 
+                    className={`results-container`}
+                >
+                    {displayAllHotels()}
                 </div>
 
             </div>

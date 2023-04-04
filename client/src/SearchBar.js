@@ -65,8 +65,8 @@ function SearchBar (props) {
         </div>
 
         <select id='planet' onChange={(e) => {setPlanetFilter(e)}} value={chosenPlanetState}>
-          <option disabled selected value>Planet</option>
-          <option>None</option>
+          <option disabled selected value>Filter By Planet</option>
+          <option>No Filter</option>
           {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}
         </select>
 

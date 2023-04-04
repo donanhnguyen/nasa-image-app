@@ -97,7 +97,7 @@ a:hover {
   }
 }
 
-/*  */
+/* home page */
 .home-container {
 }
 .featured-hotels-heading {
@@ -154,11 +154,11 @@ a:hover {
   border-radius: 20px;
 }
 
+/* search page */
+
 .search-hotels-container {
- 
   width: 80%;
   margin: auto;
- 
 }
 .search-hotels-container h1 {
   font-size: 2.0rem;
@@ -220,15 +220,16 @@ a:hover {
     
   }
 }
+
+.invisible {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+
 /*  */
-.hotel-pic-in-show-page {
-  width: 60%;
-  height: 450px;
-  border-radius: 30px;
-}
-.back-to-search-results-button {
-  margin-bottom: 20px;
-}
+/* search bar */
 .search-bar-container {
   display: flex;
   justify-content: center;
@@ -253,13 +254,11 @@ a:hover {
   background-color: white;
   height: 100%;
 }
-.date-picker input {
-
-}
 .error-messages {
   color: red;
   font-size: 1.5rem;
 }
+/* nav bar */
 .nav-bar {
   min-height: 50px;
   background-color: rgb(0, 34, 64);
@@ -296,6 +295,30 @@ a:hover {
   margin-right: 15px;
   font-size: 1.5rem;
   color: white;
+}
+/* hotel show page */
+.hotel-show-container {
+  color: white;
+}
+.hotel-pic-in-show-page {
+  width: 60%;
+  height: 490px;
+  border-radius: 30px;
+}
+@media screen and (max-width: 1200px) {
+  .hotel-pic-in-show-page {
+    width: 90%;
+    height: 490px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hotel-pic-in-show-page {
+    width: 100%;
+    height: 290px;
+  }
+}
+.back-to-search-results-button {
+  margin-bottom: 20px;
 }
 .displayed-rooms-container {
   display: flex;

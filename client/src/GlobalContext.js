@@ -20,7 +20,6 @@ export function GlobalProvider( {children} ) {
     const [dateRangeArray, setDateRangeArray] = useState();
     const [chosenPlanetState, setChosenPlanetState] = useState(null);
     const [hotelsState, setHotelsState] = useState();
-    const [hotelsInfoObject, setHotelsInfoObject] = useState({})
 
     return (
         <GlobalContext.Provider value={ {
@@ -35,8 +34,6 @@ export function GlobalProvider( {children} ) {
             setChosenPlanetState,
             hotelsState,
             setHotelsState,
-            hotelsInfoObject,
-            setHotelsInfoObject
         } }>
             {children}
         </GlobalContext.Provider>

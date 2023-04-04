@@ -68,10 +68,17 @@ function HotelShowPage () {
 
     return (
         <div className='App'>
-            <div className='App-header'>
+            <div className='hotel-show-container'>
                 
                 <button onClick={backtoresults}
-                className='btn btn-danger back-to-search-results-button'>Back to search results</button>
+                className='btn btn-danger btn-lg back-to-search-results-button'>Back to search results</button>
+
+                {
+                    dateRangeArray ?
+                    <h1>Selected Duration: {dateRangeArray[0]} - {dateRangeArray[dateRangeArray.length-1]}</h1>
+                    :
+                    ""
+                }
 
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>

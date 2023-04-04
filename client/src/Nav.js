@@ -9,14 +9,16 @@ import Modal from './Modal';
 function Nav (props) {
 
   const contextInfo = useContext(GlobalContext);
-  const {currentUserState} = contextInfo;
+  const {currentUserState, setCurrentUserState, setChosenPlanetState, setDateRange, setDateRangeArray} = contextInfo;
   const navigate = useNavigate();
 
   function logOut() {
-    // confirm thru message
-    // if (window.confirm("Do you really want to Log Out?")) {
-       // set user state to null
-      contextInfo.setCurrentUserState(null);
+      // set current user to null
+      setCurrentUserState(null);
+      // set the search filters back to null
+      setChosenPlanetState(null);
+      setDateRange([null, null]);
+      setDateRangeArray(null);
       // navigate back to home
       navigate('/');
     // }
