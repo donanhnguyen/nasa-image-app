@@ -15,22 +15,6 @@ function HotelListing (props) {
         Axios.get(`http://localhost:8800/api/hotels/${hotel._id}/rooms`)
             .then((response) => {
                 setRoomsState(response.data);
-                // var numberOfAvailableRooms = 0;
-                // for (let i in response.data) {
-                //     let currentRoom = response.data[i];
-                //     if (isRoomAvailableOrNot(dateRangeArray, currentRoom.unavailableDates)) {
-                //         numberOfAvailableRooms += 1;
-                //     }
-                // }
-                // if (numberOfAvailableRooms === 0) {
-                //     setHotelsInfoObject((prevState) => {
-                //         return {...prevState, [`${hotel.name}`]: {unAvailable: true}}
-                //     })
-                // } else {
-                //     setHotelsInfoObject((prevState) => {
-                //         return {...prevState, [`${hotel.name}`]: {unAvailable: false}}
-                //     })
-                // }
             })
     }, [])
 

@@ -1,5 +1,5 @@
-import { useLocation, useNavigate, Link} from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useLocation, useNavigate} from "react-router-dom";
+import { useState, useEffect, useContext, useRef } from "react";
 import Axios from 'axios';
 import SearchBar from "./SearchBar";
 import Loader from './Loader';
@@ -14,12 +14,14 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [numberOfResults, setNumberOfResults] = useState();
     const {chosenPlanetState, 
         setChosenPlanetState,
         hotelsInfoObject,
         dateRangeArray,
     } = useContext(GlobalContext);
+
+    const searchResultsContainerRef = useRef(null);
+    const resultsCountRef = useRef();
 
     var allPlanets = [];
     if (allHotelsState) {
@@ -61,24 +63,8 @@ function Search () {
                 />
             )
         })  
-        
         return displayAllHotels; 
     }
-
-    // function getSearchResultsNumber () {
-    //     var allHotelsDisplayed = displayAllHotels();
-    //     var newArray = [];
-    //     if (allHotelsDisplayed) {
-    //         for (let i in allHotelsDisplayed) {
-    //             let currentDisplayedHotel = allHotelsDisplayed[i];
-    //             let currentDisplayedHotelName = currentDisplayedHotel.props.hotel.name;
-    //             if (hotelsInfoObject[currentDisplayedHotelName] && hotelsInfoObject[currentDisplayedHotelName].unAvailable === false) {
-    //                 newArray.push(currentDisplayedHotel);
-    //             }
-    //         }
-    //     }
-    //     return newArray.length;
-    // }
 
     return (
         <div className="App">
@@ -95,10 +81,9 @@ function Search () {
                 setChosenPlanetState={setChosenPlanetState}
             />
     
-                    
 
             {/* display all hotels */}
-            <div className="search-hotels-container">
+            <div  className="search-hotels-container">
 
                 {isLoading ?
                     <Loader/> 
@@ -107,16 +92,19 @@ function Search () {
                 }
 
                 {/* { searchResultsReady ?
-                    <h1 style={{color: 'white'}}>{} results:</h1>
+                    <h1 style={{color: 'white'}}>{resultsCountRef.current} results:</h1>
                     :
                     <div></div>
                 } */}
 
-                { searchResultsReady ?
-                    displayAllHotels()
-                    :
-                    <div></div>
-                }
+                <div ref={searchResultsContainerRef} className="results-container">
+                    { searchResultsReady ?
+                        displayAllHotels()
+                        :
+                        <div></div>
+                    }
+                    
+                </div>
 
             </div>
 

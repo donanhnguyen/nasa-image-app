@@ -350,6 +350,38 @@ a:hover {
 .isConfirmed-container p {
   font-size: 27px;
 }
+/* myBookings page */
+.myBookings-container {
+
+}
+.single-booking-container {
+  display: grid;
+  grid-template-columns: 33.33% auto;
+  grid-gap: 20px;
+  border: 1px solid white;
+  width: 90%;
+  height: auto;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+  padding: 10px;
+  background-color: rgb(255, 254, 243);
+  color: black;
+  border-radius: 10px;
+
+}
+.single-booking-container h1, p {
+  font-size: 30px;
+}
+.hotel-pic-my-bookings-page {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.cancel-reservation-button {
+  float: right;
+}
 
 /* footer */
 .footer {
