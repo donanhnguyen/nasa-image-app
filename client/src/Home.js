@@ -12,9 +12,14 @@ function getRandomInt(max) {
 
 function Home () {
 
-    const {currentUserState, setCurrentUserState} = useContext(GlobalContext);
+    const {currentUserState, 
+        setCurrentUserState, 
+        hotelsState, 
+        setHotelsState,
+        hotelsInfoObject,
+        setHotelsInfoObject
+    } = useContext(GlobalContext);
     const location = useLocation();
-    const [hotelsState, setHotelsState] = useState();
 
     var allPlanets = [];
     if (hotelsState) {
@@ -29,6 +34,12 @@ function Home () {
         Axios.get(`http://localhost:8800/api/hotels/`)
             .then((response) => {
                 setHotelsState(response.data)
+                let obj = {};
+                for (let i in response.data) {
+                    let currentHotel = response.data[i];
+                    obj[currentHotel.name] = {unAvailable: false}
+                } 
+                setHotelsInfoObject(obj);
             })
     }, [])
 

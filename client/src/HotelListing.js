@@ -6,7 +6,7 @@ import GlobalContext from './GlobalContext';
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot, setHotelsInfoObject, hotelsInfoObject} = contextInfo;
 
     const {hotel, navigateToHotelShowPage} = props;
     const [roomsState, setRoomsState] = useState([]);
@@ -15,6 +15,22 @@ function HotelListing (props) {
         Axios.get(`http://localhost:8800/api/hotels/${hotel._id}/rooms`)
             .then((response) => {
                 setRoomsState(response.data);
+                // var numberOfAvailableRooms = 0;
+                // for (let i in response.data) {
+                //     let currentRoom = response.data[i];
+                //     if (isRoomAvailableOrNot(dateRangeArray, currentRoom.unavailableDates)) {
+                //         numberOfAvailableRooms += 1;
+                //     }
+                // }
+                // if (numberOfAvailableRooms === 0) {
+                //     setHotelsInfoObject((prevState) => {
+                //         return {...prevState, [`${hotel.name}`]: {unAvailable: true}}
+                //     })
+                // } else {
+                //     setHotelsInfoObject((prevState) => {
+                //         return {...prevState, [`${hotel.name}`]: {unAvailable: false}}
+                //     })
+                // }
             })
     }, [])
 
@@ -34,7 +50,7 @@ function HotelListing (props) {
         }
         return numberOfAvailableRooms;
     }
-
+    
     if (countHowManyAvailableRooms() > 0) {
       return (
         <div onClick={() => navigateToHotelShowPage(hotel)} 

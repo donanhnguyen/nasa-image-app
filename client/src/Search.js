@@ -14,7 +14,12 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const {chosenPlanetState, setChosenPlanetState, dateRange} = useContext(GlobalContext);
+    const [numberOfResults, setNumberOfResults] = useState();
+    const {chosenPlanetState, 
+        setChosenPlanetState,
+        hotelsInfoObject,
+        dateRangeArray,
+    } = useContext(GlobalContext);
 
     var allPlanets = [];
     if (allHotelsState) {
@@ -47,8 +52,6 @@ function Search () {
             hotelsArrayBeforeFilters = allHotelsState;
         }
 
-        // apply available rooms filter here?
-        
         var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
             return (
                 <HotelListing
@@ -57,9 +60,25 @@ function Search () {
                     navigateToHotelShowPage={navigateToHotelShowPage}
                 />
             )
-        })
+        })  
+        
         return displayAllHotels; 
     }
+
+    // function getSearchResultsNumber () {
+    //     var allHotelsDisplayed = displayAllHotels();
+    //     var newArray = [];
+    //     if (allHotelsDisplayed) {
+    //         for (let i in allHotelsDisplayed) {
+    //             let currentDisplayedHotel = allHotelsDisplayed[i];
+    //             let currentDisplayedHotelName = currentDisplayedHotel.props.hotel.name;
+    //             if (hotelsInfoObject[currentDisplayedHotelName] && hotelsInfoObject[currentDisplayedHotelName].unAvailable === false) {
+    //                 newArray.push(currentDisplayedHotel);
+    //             }
+    //         }
+    //     }
+    //     return newArray.length;
+    // }
 
     return (
         <div className="App">
@@ -88,7 +107,7 @@ function Search () {
                 }
 
                 {/* { searchResultsReady ?
-                    <h1 style={{color: 'white'}}>{displayAllHotels().length} results:</h1>
+                    <h1 style={{color: 'white'}}>{} results:</h1>
                     :
                     <div></div>
                 } */}
