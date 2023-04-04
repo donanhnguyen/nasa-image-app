@@ -14,7 +14,7 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const {chosenPlanetState, setChosenPlanetState} = useContext(GlobalContext);
+    const {chosenPlanetState, setChosenPlanetState, dateRange} = useContext(GlobalContext);
 
     var allPlanets = [];
     if (allHotelsState) {
@@ -58,9 +58,7 @@ function Search () {
                 />
             )
         })
-
-        return displayAllHotels;
-        
+        return displayAllHotels; 
     }
 
     return (
@@ -89,11 +87,11 @@ function Search () {
                     <div></div>
                 }
 
-                { searchResultsReady ?
+                {/* { searchResultsReady ?
                     <h1 style={{color: 'white'}}>{displayAllHotels().length} results:</h1>
                     :
                     <div></div>
-                }
+                } */}
 
                 { searchResultsReady ?
                     displayAllHotels()
