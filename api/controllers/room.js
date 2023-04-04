@@ -1,5 +1,4 @@
 import Room from "../models/Room.js";
-import Hotel from "../models/Hotel.js";
 
 // GET all rooms from a specific hotel
 export const getAllRoomsFromHotel = async (req, res) => {
@@ -33,3 +32,12 @@ export const updateRoomUnavailableDates = async (req, res) => {
         res.status(500).json(err);
     }
 };
+
+export const getSingleRoom = async (req, res) => {
+    try {
+        const foundRoom = await Room.findById(req.params.roomId);
+        res.status(200).json(foundRoom);
+    } catch(err) {
+        res.status(500).json(err);
+    }
+}

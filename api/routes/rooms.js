@@ -1,10 +1,13 @@
 import express from "express";
-import { createRoomInHotel, getAllRoomsFromHotel, updateRoomUnavailableDates } from "../controllers/room.js";
+import { createRoomInHotel, getAllRoomsFromHotel, updateRoomUnavailableDates, getSingleRoom } from "../controllers/room.js";
 
 const router = express.Router();
 
 // get ALL rooms from hotel
 router.get('/:hotelId/rooms/', getAllRoomsFromHotel)
+
+// get single room
+router.get('/rooms/:roomId/', getSingleRoom)
 
 
 // update a room when booked, update the unavailableDates array by adding in the dates

@@ -16,9 +16,8 @@ function Home () {
         setCurrentUserState, 
         hotelsState, 
         setHotelsState,
-        hotelsInfoObject,
-        setHotelsInfoObject
     } = useContext(GlobalContext);
+    
     const location = useLocation();
 
     var allPlanets = [];
@@ -34,12 +33,6 @@ function Home () {
         Axios.get(`http://localhost:8800/api/hotels/`)
             .then((response) => {
                 setHotelsState(response.data)
-                let obj = {};
-                for (let i in response.data) {
-                    let currentHotel = response.data[i];
-                    obj[currentHotel.name] = {unAvailable: false}
-                } 
-                setHotelsInfoObject(obj);
             })
     }, [])
 
