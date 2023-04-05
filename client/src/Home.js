@@ -1,5 +1,5 @@
-import {useState, useEffect, useContext} from 'react';
-import { useLocation } from 'react-router-dom';
+import {useEffect, useContext} from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
@@ -12,13 +12,12 @@ function getRandomInt(max) {
 
 function Home () {
 
-    const {currentUserState, 
-        setCurrentUserState, 
+    const {setChosenPlanetState, 
         hotelsState, 
         setHotelsState,
     } = useContext(GlobalContext);
     
-    const location = useLocation();
+    const navigate = useNavigate();
 
     var allPlanets = [];
     if (hotelsState) {
@@ -36,6 +35,11 @@ function Home () {
             })
     }, [])
 
+    function navigateToPlanetSearchResults (e) {
+        setChosenPlanetState(e.target.alt);
+        navigate('/search');
+    }
+
     function displayPlanets () {
         const displayedPlanets = allPlanets.map((planet) => {
             var countHowManyHotelsInPlanet = 0;
@@ -46,7 +50,7 @@ function Home () {
                 }
             }
             return (
-                <div key={planet} className="single-planet-container">
+                <div onClick={(e) => navigateToPlanetSearchResults(e)} key={planet} className="single-planet-container">
                     <h1>{planet}</h1>
                     <img src={require(`../pics/${planet.split(' ').join('')}.jpg`)} 
                         alt={planet} 

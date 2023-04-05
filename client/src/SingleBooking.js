@@ -53,7 +53,7 @@ function SingleBooking (props) {
                 <h1>Duration: {booking.dates[0]} - {booking.dates[booking.dates.length-1]}</h1>
                 <p>Confirmation Number: {booking._id}</p>
 
-                <h1 style={{float: 'left'}}>Total Price: <h1 style={{color: 'green'}}>${booking.totalPrice}</h1></h1>
+                <h1 className='total-price'>Total Price: <h1 style={{color: 'green'}}>${booking.totalPrice}</h1></h1>
                 <button onClick={cancelReservation}
                 className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button>
 

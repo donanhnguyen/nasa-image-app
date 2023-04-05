@@ -142,11 +142,15 @@ a:hover {
   margin: 5px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.773);
-  opacity: 90%;
+  opacity: 80%;
 }
 .single-planet-container:hover {
   opacity: 100%;
   cursor: pointer;
+  box-shadow: 0 0 5px #005ec3,
+  0 0 25px #005ec3,
+  0 0 50px #005ec3,
+  0 0 10px #005ec3;
 }
 .single-planet-image {
   height: 70%;
@@ -384,7 +388,8 @@ a:hover {
 }
 /* myBookings page */
 .myBookings-container {
-
+  width: 80%;
+  margin: auto;
 }
 .single-booking-container {
   display: grid;
@@ -400,7 +405,6 @@ a:hover {
   background-image: linear-gradient(to right, rgb(34, 34, 34) , rgb(43, 64, 127));
   color: rgb(255, 255, 255);
   border-radius: 10px;
-
 }
 .single-booking-container h1 {
   font-size: 30px;
@@ -415,10 +419,36 @@ a:hover {
   height: 100%;
   border-radius: 10px;
 }
+.total-price {
+  float: left;
+}
 .cancel-reservation-button {
   float: right;
 }
-
+@media screen and (max-width: 1080px) {
+  .single-booking-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .single-booking-container {
+    display: block;
+  }
+  .cancel-reservation-button {
+    float: none;
+  }
+  .total-price {
+    float: none;
+  }
+  .single-booking-container h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .single-booking-container p {
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
 /* footer */
 .footer {
   display: block;
