@@ -82,13 +82,13 @@ function HotelShowPage () {
 
                 <h1>{hotel.name}</h1>
                 <h1>Planet: {hotel.planet}</h1>
-                <p>{hotel.description}</p>
+                <p class='hotel-description-in-show-page'>{hotel.description}</p>
                 <img className="hotel-pic-in-show-page animate__animated animate__zoomIn" 
                 src={require(`../pics/${hotel.name.split(' ').join('')}.jpg`)}>  
                 </img>
 
                 {/* display rooms */}
-                <p>Rooms:</p>
+                <h2>Rooms:</h2>
                 <div className='displayed-rooms-container'>
                     {displayRooms()}
                 </div>

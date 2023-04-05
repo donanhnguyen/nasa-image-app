@@ -300,11 +300,20 @@ a:hover {
 .hotel-show-container {
   color: white;
 }
+.hotel-description-in-show-page {
+  font-size: 2em;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+  color: rgb(239, 239, 38);
+  background-color: rgba(0, 20, 52, 0.686);
+}
 .hotel-pic-in-show-page {
   width: 60%;
   height: 490px;
   border-radius: 30px;
 }
+
 @media screen and (max-width: 1200px) {
   .hotel-pic-in-show-page {
     width: 90%;
@@ -380,22 +389,26 @@ a:hover {
 .single-booking-container {
   display: grid;
   grid-template-columns: 33.33% auto;
-  grid-gap: 20px;
-  border: 1px solid white;
+  grid-gap: 18px;
+  box-shadow: 1px 1px 1px 1px gray;
   width: 90%;
   height: auto;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  
   padding: 10px;
-  background-color: rgb(255, 254, 243);
-  color: black;
+  background-image: linear-gradient(to right, rgb(34, 34, 34) , rgb(43, 64, 127));
+  color: rgb(255, 255, 255);
   border-radius: 10px;
 
 }
-.single-booking-container h1, p {
+.single-booking-container h1 {
   font-size: 30px;
+  font-weight: bold;
+}
+.single-booking-container p {
+  font-size: 25px;
+  font-weight: bold;
 }
 .hotel-pic-my-bookings-page {
   width: 100%;

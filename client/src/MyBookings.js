@@ -12,7 +12,10 @@ function myBookingsReducer(state, action) {
     case 'getAllBookings':
       return action.payload;
     case 'deleteBooking':
-      
+      const newState = state.filter((booking) => {
+        return booking._id !== action.payload._id;
+      })
+      return newState;
     default:
       throw new Error();
   }

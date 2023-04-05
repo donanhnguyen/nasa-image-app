@@ -11,7 +11,7 @@ router.get('/rooms/:roomId/', getSingleRoom)
 
 
 // update a room when booked, update the unavailableDates array by adding in the dates
-router.put('/:hotelId/rooms/:roomId/', updateRoomUnavailableDates)
+router.put('/rooms/:roomId/', updateRoomUnavailableDates)
 
 
 // create a room in hotel

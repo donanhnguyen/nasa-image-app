@@ -3,6 +3,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import Loader from './Loader';
+import './FancyButtons.css';
 
 function ConfirmBookingPage () {
     const location = useLocation();
@@ -34,7 +35,7 @@ function ConfirmBookingPage () {
             .then((response) => {
               setBookingConfirmationNumber(response.data._id);
             })
-        Axios.put(`http://localhost:8800/api/hotels/${hotel._id}/rooms/${room._id}`, 
+        Axios.put(`http://localhost:8800/api/hotels/rooms/${room._id}`, 
         {unavailableDates: room.unavailableDates.concat(dateRangeArray)});
 
         setTimeout(() => {
@@ -72,11 +73,12 @@ function ConfirmBookingPage () {
 
                 <p>Total price for {dateRangeArray.length} days: ${dateRangeArray.length * room.price}</p>
                 
-                <button 
-                    onClick={confirmBooking}
-                    className='btn btn-danger btn-lg'
-                >
-                    Confirm Booking
+                <button onClick={confirmBooking} className='confirm-booking-button'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Confirm Booking
                 </button>
 
             </div>
