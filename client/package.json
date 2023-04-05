@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "sass": "^1.60.0",
     "url-loader": "^4.1.1"
   }
 }

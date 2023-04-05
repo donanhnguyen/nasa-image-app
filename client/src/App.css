@@ -72,11 +72,12 @@ a:hover {
 /*  */
 .main-header {
   font-family: 'Allerta Stencil';
-  color: rgb(236,100,75);
-  animation: wheelHueColor 10s infinite;
+  color: rgb(255, 255, 255);
+  /* animation: wheelHueColor 10s infinite; */
   text-align: center;
   font-weight: bold;
   font-size: 5rem;
+  margin-bottom: 20px;
 }
 
 @keyframes wheelHueColor {

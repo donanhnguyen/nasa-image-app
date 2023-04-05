@@ -1,10 +1,12 @@
 import {useEffect, useContext} from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
+import './ImageCarousel.scss';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './cardflip.css';
 import Footer from './Footer';
+import HotelPicSlider from './HotelPicSlider';
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -106,6 +108,8 @@ function Home () {
                     GalaxyStays.com
                 </h1>
                 
+                <HotelPicSlider hotelsState={hotelsState}/>
+
                 <br></br>
 
                 <div className='featured-hotels-container'>
