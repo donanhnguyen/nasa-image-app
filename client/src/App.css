@@ -92,25 +92,51 @@ a:hover {
   80%      { color: rgb(243,156,18); }
   90%      { color: rgb(236,240,241); }
 }
-@media screen and (max-width: 780px) {
-  .main-header {
-    font-size: 3.4rem;
-  }
-}
 
 /* home page */
 .home-container {
+  border-right: 1px solid rgba(255, 255, 255, 0.333);
+  border-left: 1px solid rgba(255, 255, 255, 0.333);
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.139);
+  margin: auto;
+  width: 60%;
 }
 .featured-hotels-heading {
   font-family: 'Allerta Stencil';
-  font-size: 4rem;
+  font-size: 3.7rem;
   font-weight: bold;
+}
+@media screen and (max-width: 1230px) {
+  .main-header {
+    font-size: 2.0em;
+  }
+  .featured-hotels-heading {
+    font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .home-container {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .main-header {
+    font-size: 1.5em
+  }
 }
 .featured-hotels-container {
   border: 0.5px solid rgba(255, 255, 255, 0.158);
   border-radius: 5px;
   padding: 100px;
   background-color: rgba(0, 0, 0, 0.532);
+  width: 100%;
 }
 .featured-hotels {
   display: flex;
@@ -132,7 +158,7 @@ a:hover {
   border-radius: 20px;
 }
 .displayed-planets-container {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -264,6 +290,7 @@ a:hover {
   font-size: 1.5rem;
 }
 /* nav bar */
+
 .nav-bar {
   min-height: 50px;
   background-color: rgb(0, 34, 64);
@@ -286,20 +313,47 @@ a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0px;
 }
 .nav-bar ul li {
   font-size: 2rem;
   margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 30px;
+}
+.galaxyStays {
+  color: white;
+  float: left;
+  padding: 30px;
+  font-family: 'Allerta Stencil';
 }
 .loggedin {
   display: flex;
   float: right;
-  margin-top: 10px;
-  margin-right: 15px;
-  font-size: 1.5rem;
+  padding: 30px;
+  font-size: 1.5em;
   color: white;
+}
+@media screen and (max-width: 1270px) {
+  .galaxyStays {
+    float: none;
+    padding: 10px;
+    margin: 0px;
+  }
+  .nav-bar ul {
+    width: 90%;
+    margin: auto;
+    padding: 0px;
+  }
+  .loggedin {
+    float: none;
+    display: block;
+    padding: 10px;
+    margin: 0px;
+  }
+  .nav-bar ul li {
+    margin: 5px;
+    padding: 15px;
+  }
 }
 /* hotel show page */
 .hotel-show-container {

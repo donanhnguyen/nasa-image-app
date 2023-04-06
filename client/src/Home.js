@@ -102,11 +102,11 @@ function Home () {
 
     return (
         <div>
-            <div className="App-header">
+            <div className="home-container">
 
-                <h1 className='main-header'>
+                {/* <h1 className='main-header'>
                     GalaxyStays.com
-                </h1>
+                </h1> */}
                 
                 <HotelPicSlider hotelsState={hotelsState}/>
 
@@ -129,8 +129,8 @@ function Home () {
                 </div>
            
                 
-        </div>
-        <Footer/>
+            </div>
+            <Footer/>
         </div>
         
     )

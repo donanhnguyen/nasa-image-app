@@ -66,14 +66,19 @@ function Nav (props) {
   }
 
   return (
-
-        <nav className='nav-bar'>
+    <div>
+       
+          <nav className='nav-bar'>   
+          <h1 className='galaxyStays'>
+              GalaxyStays.com
+          </h1>
             {
               currentUserState ?
               <p className='loggedin'>Welcome, {currentUserState.username}</p>
               :
               <p className='loggedin'>Not Logged In</p>
             }
+
             <ul>
  
                 <li>
@@ -87,10 +92,13 @@ function Nav (props) {
                 
                 {displayLogInOrLogOutButton()}
                 
-                {displaySignUpButtonOrNot()}
+                {displaySignUpButtonOrNot()}    
+
             </ul>
 
         </nav>
+    </div>
+
 
   );
 }
