@@ -30,7 +30,7 @@ mongoose.connection.on('disconnected', () => {
 
 // middlewares
 const corsOptions = {
-    origin: "http://localhost:3000"
+    origin: "https://galaxystays.onrender.com"
 }
 
 app.use(express.json());
