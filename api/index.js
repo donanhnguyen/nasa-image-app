@@ -17,7 +17,7 @@ dotenv.config();
 
 const connect = async () => {
     try {
-        await mongoose.connect(process.env.MONGO);
+        await mongoose.connect(process.env.MONGO_URI);
         console.log('connected  ')
     } catch (error) {
         throw error
@@ -29,9 +29,12 @@ mongoose.connection.on('disconnected', () => {
 })
 
 // middlewares
+const corsOptions = {
+    origin: "http://localhost:3000"
+}
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use('/api/auth/', authRoute);
 app.use('/api/users/', usersRoute);
@@ -39,9 +42,10 @@ app.use('/api/hotels/', hotelsRoute);
 app.use('/api/users/', bookingsRoute);
 app.use('/api/hotels/', roomsRoute);
 
-app.listen(8800, () => {
+const PORT = process.env.PORT || 8800;
+
+app.listen(PORT, () => {
     connect(); 
     // Hotel.insertMany(seededHotels);
     // Room.insertMany(seededRooms);
-    console.log("hey")
 })

@@ -381,31 +381,31 @@ const seededRooms = [
     //     hotelId: '6425e5fa28f770e4303ff189'
     // },
     // varykino villa
-    {
-        name: "Entire Villa",
-        price: 500,
-        unvailableDates: [],
-        hotelId: '642e51c02e144f94622f2691'
-    },
-    // wookie village
-    {
-        name: "Small Hut",
-        price: 25,
-        unvailableDates: [],
-        hotelId: '642e51c02e144f94622f2692'
-    },
-    {
-        name: "Medium Hut",
-        price: 30,
-        unvailableDates: [],
-        hotelId: '642e51c02e144f94622f2692'
-    },
-    {
-        name: "Large Hut",
-        price: 35,
-        unvailableDates: [],
-        hotelId: '642e51c02e144f94622f2692'
-    },
+    // {
+    //     name: "Entire Villa",
+    //     price: 500,
+    //     unvailableDates: [],
+    //     hotelId: '642e51c02e144f94622f2691'
+    // },
+    // // wookie village
+    // {
+    //     name: "Small Hut",
+    //     price: 25,
+    //     unvailableDates: [],
+    //     hotelId: '642e51c02e144f94622f2692'
+    // },
+    // {
+    //     name: "Medium Hut",
+    //     price: 30,
+    //     unvailableDates: [],
+    //     hotelId: '642e51c02e144f94622f2692'
+    // },
+    // {
+    //     name: "Large Hut",
+    //     price: 35,
+    //     unvailableDates: [],
+    //     hotelId: '642e51c02e144f94622f2692'
+    // },
 ]
 
 export {seededHotels, seededRooms}
