@@ -17,6 +17,8 @@ function Home () {
     const {setChosenPlanetState, 
         hotelsState, 
         setHotelsState,
+        localHost,
+        renderURL
     } = useContext(GlobalContext);
     
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ function Home () {
     }
 
     useEffect(() => {
-        Axios.get(`http://localhost:8800/api/hotels/`)
+        Axios.get(`${renderURL}/api/hotels/`)
             .then((response) => {
                 setHotelsState(response.data)
             })

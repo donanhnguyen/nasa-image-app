@@ -6,13 +6,13 @@ import GlobalContext from './GlobalContext';
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot, renderURL, localHost} = contextInfo;
 
     const {hotel, navigateToHotelShowPage} = props;
     const [roomsState, setRoomsState] = useState([]);
 
     useEffect(() => {
-        Axios.get(`http://localhost:8800/api/hotels/${hotel._id}/rooms`)
+        Axios.get(`${renderURL}/api/hotels/${hotel._id}/rooms`)
             .then((response) => {
                 setRoomsState(response.data);
             })

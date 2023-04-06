@@ -5,12 +5,12 @@ import GlobalContext from './GlobalContext';
 
 function SingleBooking (props) {
 
-    const {currentUserState} = useContext(GlobalContext);
+    const {currentUserState, localHost, renderURL} = useContext(GlobalContext);
     const {booking, myBookingsDispatch} = props;
     const [singleRoomState, setSingleRoomState] = useState();
 
     useEffect(() => {
-        Axios.get(`http://localhost:8800/api/hotels/rooms/${booking.roomId}`)
+        Axios.get(`${renderURL}/api/hotels/rooms/${booking.roomId}`)
             .then((response) => {
                 setSingleRoomState(response.data)
             })
@@ -29,11 +29,11 @@ function SingleBooking (props) {
                 }
             }
             // api call to remove from /bookings
-            Axios.delete(`http://localhost:8800/api/users/${currentUserState._id}/bookings/${booking._id}`)
+            Axios.delete(`${renderURL}/api/users/${currentUserState._id}/bookings/${booking._id}`)
                 .then((response) => console.log(response))
                 .catch((err) => console.log(err))
             // api call to update the room's unavailable dates
-            Axios.put(`http://localhost:8800/api/hotels/rooms/${singleRoomState._id}`, 
+            Axios.put(`${renderURL}/api/hotels/rooms/${singleRoomState._id}`, 
                 {unavailableDates: newUnavailableDatesArray});
         }       
     }

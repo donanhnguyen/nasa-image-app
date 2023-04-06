@@ -18,6 +18,8 @@ function Search () {
         setChosenPlanetState,
         dateRangeArray,
         dateRange,
+        localHost,
+        renderURL
     } = useContext(GlobalContext);
 
     const searchResultsContainerRef = useRef(null);
@@ -32,7 +34,7 @@ function Search () {
     }
 
     useEffect(() => {
-        Axios.get(`http://localhost:8800/api/hotels/`)
+        Axios.get(`${renderURL}/api/hotels/`)
             .then((response) => {
                 setAllHotelsState(response.data)
             })

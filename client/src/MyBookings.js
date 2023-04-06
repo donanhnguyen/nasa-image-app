@@ -25,10 +25,10 @@ function MyBookings () {
 
   const [myBookingsState, myBookingsDispatch] = useReducer(myBookingsReducer, initialState);
 
-  const {currentUserState} = useContext(GlobalContext);
+  const {currentUserState, localHost, renderURL} = useContext(GlobalContext);
 
   useEffect(() => {
-    Axios.get(`http://localhost:8800/api/users/${currentUserState._id}/bookings/`)
+    Axios.get(`${renderURL}/api/users/${currentUserState._id}/bookings/`)
         .then((response) => {
             myBookingsDispatch({type: 'getAllBookings', payload: response.data});
         })

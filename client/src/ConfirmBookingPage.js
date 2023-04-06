@@ -10,7 +10,9 @@ function ConfirmBookingPage () {
     const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
     const {currentUserState, 
-        dateRangeArray
+        dateRangeArray,
+        localHost,
+        renderURL
     } = contextInfo;
     const {room, hotel} = location.state;
 
@@ -31,11 +33,11 @@ function ConfirmBookingPage () {
     function confirmBooking () {
         setIsLoading(true);
 
-        Axios.post(`http://localhost:8800/api/users/${currentUserState._id}/bookings/`, bookingDetailsObject)
+        Axios.post(`${renderURL}/api/users/${currentUserState._id}/bookings/`, bookingDetailsObject)
             .then((response) => {
               setBookingConfirmationNumber(response.data._id);
             })
-        Axios.put(`http://localhost:8800/api/hotels/rooms/${room._id}`, 
+        Axios.put(`${renderURL}/api/hotels/rooms/${room._id}`, 
         {unavailableDates: room.unavailableDates.concat(dateRangeArray)});
 
         setTimeout(() => {

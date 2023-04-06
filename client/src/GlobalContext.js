@@ -21,6 +21,9 @@ export function GlobalProvider( {children} ) {
     const [chosenPlanetState, setChosenPlanetState] = useState(null);
     const [hotelsState, setHotelsState] = useState();
 
+    const localHost = "http://localhost:8800";
+    const renderURL = "https://galaxystays-backend.onrender.com";
+
     return (
         <GlobalContext.Provider value={ {
             currentUserState, 
@@ -34,6 +37,8 @@ export function GlobalProvider( {children} ) {
             setChosenPlanetState,
             hotelsState,
             setHotelsState,
+            localHost,
+            renderURL
         } }>
             {children}
         </GlobalContext.Provider>

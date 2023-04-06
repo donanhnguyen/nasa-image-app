@@ -9,7 +9,7 @@ function SignUp (props) {
 
 
     const contextInfo = useContext(GlobalContext);
-    const {setCurrentUserState, currentUserState} = contextInfo;
+    const {setCurrentUserState, currentUserState, localHost, renderURL} = contextInfo;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ function SignUp (props) {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Fields can't be blank!");
         } else {
-          Axios.post(`http://localhost:8800/api/auth/register/`, formState)
+          Axios.post(`${renderURL}/api/auth/register/`, formState)
             .then((response) => {
                setCurrentUserState(response.data);
                alert("Successful Register!");

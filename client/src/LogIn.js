@@ -10,6 +10,7 @@ function LogIn(props) {
 
 
     const contextInfo = useContext(GlobalContext);
+    const {localHost, renderURL} = contextInfo;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ function LogIn(props) {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Invalid Login.")
         }
-        Axios.get(`http://localhost:8800/api/users/${formState.username}/`)
+        Axios.get(`${renderURL}/api/users/${formState.username}/`)
             .then((response) => {
                 if (response.data.password === formState.password) {
                     contextInfo.setCurrentUserState(response.data);

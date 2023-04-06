@@ -10,7 +10,9 @@ function HotelShowPage () {
     const contextInfo = useContext(GlobalContext);
     const {currentUserState, 
         isRoomAvailableOrNot, 
-        dateRangeArray
+        dateRangeArray,
+        localHost,
+        renderURL
     } = contextInfo;
 
     const [hotelRoomsState, setHotelRoomsState] = useState([]);
@@ -18,7 +20,7 @@ function HotelShowPage () {
     const hotel = location.state.hotel;
 
     useEffect(() => {
-        Axios.get(`http://localhost:8800/api/hotels/${hotel._id}/rooms/`)
+        Axios.get(`${renderURL}/api/hotels/${hotel._id}/rooms/`)
             .then((response) => {
                 setHotelRoomsState(response.data);
             })
