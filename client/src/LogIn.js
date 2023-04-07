@@ -3,8 +3,8 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
-import Modal from './Modal';
 import './LoginForm.css';
+import './modal.css'
 
 function LogIn(props) {
 
@@ -16,6 +16,7 @@ function LogIn(props) {
     const navigate = useNavigate();
 
     const [errorsState, setErrorsState] = useState("");
+    const [successfulLogIn, setSuccessfulLogIn] = useState(false);
 
     const [formState, setFormState] = useState({
         username: "",
@@ -39,8 +40,11 @@ function LogIn(props) {
             .then((response) => {
                 if (response.data.password === formState.password) {
                     contextInfo.setCurrentUserState(response.data);
-                    alert("Success!");
-                    navigate('/');
+                    // alert("Success!");
+                    setSuccessfulLogIn(true);
+                    setTimeout(() => {
+                       navigate('/');  
+                    }, 1000)
                 } else {
                     setErrorsState("Wrong Password");
                 }
@@ -61,10 +65,16 @@ function LogIn(props) {
         })
     }
 
-
   return (
     <div className="App">
       <header className="App-header">
+      
+        <div id="myModal" className={`modal ${successfulLogIn ? "yes-modal" : "" }`}>
+            <div className={`modal-content`}>
+                <span className="close">&times;</span>
+                <p>Success!</p>
+            </div>
+        </div>
 
         <div className="login-box">
         <h2>Log In</h2>   
