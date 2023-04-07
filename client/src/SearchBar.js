@@ -6,6 +6,7 @@ function SearchBar (props) {
 
   const contextInfo = useContext(GlobalContext);
   const {dateRange, setDateRange, dateRangeArray, setDateRangeArray} = contextInfo;
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const {allPlanets, 
     setSearchResultsReady,
@@ -33,7 +34,7 @@ function SearchBar (props) {
     if (dateRange.some((date) => {
       return date === null;
     })) {
-      alert("Date's can't be blank!");
+      setShowErrorModal(true);
     } else {
 
 
@@ -59,6 +60,13 @@ function SearchBar (props) {
 
   return (
     <div className="search-bar-container">
+
+        <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
+            <div className={`modal-content`}>
+                <p style={{fontSize: '28px', color: 'red'}}>Date's can't be blank!</p>
+                <button className="btn btn-danger btn-lg" style={{width: '50%', margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
+            </div>
+        </div>
 
         <div>
           <DateRangePicker clearIcon={null} format='MM/dd/y'className={'date-picker'} onChange={ (value) => {handleSetDateRange(value)} } value={dateRange} />

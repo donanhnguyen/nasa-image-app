@@ -40,7 +40,6 @@ function LogIn(props) {
             .then((response) => {
                 if (response.data.password === formState.password) {
                     contextInfo.setCurrentUserState(response.data);
-                    // alert("Success!");
                     setSuccessfulLogIn(true);
                     setTimeout(() => {
                        navigate('/');  
@@ -68,7 +67,8 @@ function LogIn(props) {
   return (
     <div className="App">
       <header className="App-header">
-      
+
+      {/* modal */}
         <div id="myModal" className={`modal ${successfulLogIn ? "yes-modal" : "" }`}>
             <div className={`modal-content`}>
                 <span className="close">&times;</span>

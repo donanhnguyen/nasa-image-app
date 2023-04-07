@@ -14,11 +14,11 @@ function Search () {
     const [allHotelsState, setAllHotelsState] = useState(null);
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [showErrorModal, setShowErrorModal] = useState(false);
     const {chosenPlanetState, 
         setChosenPlanetState,
         dateRangeArray,
         dateRange,
-        localHost,
         renderURL
     } = useContext(GlobalContext);
 
@@ -53,7 +53,7 @@ function Search () {
         if (dateRangeArray) {
             navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel} } );  
         } else {
-            alert("Please select your date range first.");
+            setShowErrorModal(true);
         }
     }
 
@@ -85,6 +85,12 @@ function Search () {
     return (
         <div className="App">
        
+       <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
+            <div className={`modal-content`}>
+                <p style={{fontSize: '28px', color: 'red'}}>Please select your date range first</p>
+                <button className="btn btn-danger btn-lg" style={{width: '50%', margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
+            </div>
+        </div>
 
             {/* search bar here */}
             <SearchBar 

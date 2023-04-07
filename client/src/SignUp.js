@@ -3,13 +3,14 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
-
+import './modal.css'
 
 function SignUp (props) {
 
 
     const contextInfo = useContext(GlobalContext);
-    const {setCurrentUserState, currentUserState, localHost, renderURL} = contextInfo;
+    const {setCurrentUserState, currentUserState, renderURL} = contextInfo;
+    const [successfulResgister, setSuccessfulRegister] = useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -37,8 +38,10 @@ function SignUp (props) {
           Axios.post(`${renderURL}/api/auth/register/`, formState)
             .then((response) => {
                setCurrentUserState(response.data);
-               alert("Successful Register!");
-               navigate('/');
+               setSuccessfulRegister(true);
+                setTimeout(() => {
+                    navigate('/');  
+                }, 1000)
             })
             .catch((error) => {
                 setErrorsState("Username already taken.")
@@ -62,6 +65,14 @@ function SignUp (props) {
   return (
     <div className="App">
       <header className="App-header">
+
+        {/* modal */}
+        <div id="myModal" className={`modal ${successfulResgister ? "yes-modal" : "" }`}>
+            <div className={`modal-content`}>
+                <span className="close">&times;</span>
+                <p>Success!</p>
+            </div>
+        </div>
 
         <div className="login-box">
         <h2>Sign Up</h2>   
