@@ -6,9 +6,9 @@ import GlobalContext from './GlobalContext';
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot, renderURL, localHost} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot, renderURL, setHotelInfoObjectState, chosenPlanetState} = contextInfo;
 
-    const {hotel, navigateToHotelShowPage} = props;
+    const {hotel, navigateToHotelShowPage, sortFilterState} = props;
     const [roomsState, setRoomsState] = useState([]);
 
     useEffect(() => {
@@ -18,10 +18,24 @@ function HotelListing (props) {
             })
     }, [])
 
+    // useEffect(() => {
+    //     if (roomsState) {
+    //         setHotelInfoObjectState((prevState) => {
+    //             return {...prevState, [`${hotel.name}`]: getStartingPrice()}
+    //         })
+    //     }
+    // }, [sortFilterState, chosenPlanetState])
+
     function getStartingPrice () {
-        var res = Math.min.apply(Math, roomsState.map(function(o) { 
-			return o.price; }));
-        return res;   
+        if (roomsState.length > 0) {
+            var lowest = roomsState[0].price;
+            for (let i in roomsState) {
+                if (roomsState[i].price < lowest) {
+                    lowest = roomsState[i].price;
+                }
+            }
+            return lowest;
+        } 
     }
 
     function countHowManyAvailableRooms () {
@@ -37,7 +51,7 @@ function HotelListing (props) {
     
     if (countHowManyAvailableRooms() > 0) {
       return (
-        <div onClick={() => navigateToHotelShowPage(hotel)} 
+        <div 
             className="single-hotel-listing-container" 
             >
 
@@ -66,6 +80,7 @@ function HotelListing (props) {
                 <h1>
                     {dateRangeArray ?  <p style={{color: 'red'}}>Rooms Available: {countHowManyAvailableRooms()}</p> : <p style={{color: 'red'}}>Select dates to see available rooms.</p>}
                 </h1>
+                <button onClick={() => navigateToHotelShowPage(hotel)} className='btn btn-warning btn-lg'>See Rooms</button>
             </div>
             
         </div>

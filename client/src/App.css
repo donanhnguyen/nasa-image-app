@@ -220,8 +220,8 @@ a:hover {
   font-size: 28px;
 }
 .single-hotel-listing-container:hover {
-  background-color: rgba(4, 0, 44, 0.782);
-  cursor: pointer;
+  background-color: rgba(4, 0, 44, 0.568);
+  /* cursor: pointer; */
 }
 .hotel-pic-in-search-page {
   width: 100%;

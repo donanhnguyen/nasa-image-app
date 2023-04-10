@@ -15,11 +15,13 @@ function Search () {
     const [searchResultsReady, setSearchResultsReady] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
+    const [sortFilterState, setSortFilterState] = useState(null);
     const {chosenPlanetState, 
         setChosenPlanetState,
         dateRangeArray,
         dateRange,
-        renderURL
+        renderURL,
+        hotelInfoObjectState
     } = useContext(GlobalContext);
 
     const searchResultsContainerRef = useRef(null);
@@ -59,7 +61,7 @@ function Search () {
 
     function displayAllHotels () {
         var hotelsArrayBeforeFilters = [];
-        
+        // see if planet filter is chosen or not
         if (chosenPlanetState && chosenPlanetState !== "No Filter" && allHotelsState) {
             hotelsArrayBeforeFilters = allHotelsState.filter((hotel) => {
                 return chosenPlanetState === hotel.planet;
@@ -67,6 +69,25 @@ function Search () {
         } else {
             hotelsArrayBeforeFilters = allHotelsState;
         }
+        // see if sort filter is selected or not
+
+        for (let i in hotelsArrayBeforeFilters) {
+            let currentHotel = hotelsArrayBeforeFilters[i];
+            currentHotel['lowestPrice'] = hotelInfoObjectState[currentHotel.name];
+        }
+
+        // var finalArray;
+
+        // if (sortFilterState === "Price: Low to High") {
+        //     finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelA.lowestPrice - hotelB.lowestPrice)
+        // } else if (sortFilterState === "Price: High to Low") {
+        //     finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelB.lowestPrice - hotelA.lowestPrice)
+        // } else {
+        //     finalArray = hotelsArrayBeforeFilters;
+        // }
+        
+        // console.log(finalArray);
+
         if (allHotelsState) {
             var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
                 return (
@@ -74,6 +95,7 @@ function Search () {
                         key={hotel.name + index}
                         hotel={hotel}
                         navigateToHotelShowPage={navigateToHotelShowPage}
+                        sortFilterState={sortFilterState}
                     />
                 )
             })  
@@ -101,6 +123,7 @@ function Search () {
                 setIsLoading={setIsLoading}
                 chosenPlanetState={chosenPlanetState}
                 setChosenPlanetState={setChosenPlanetState}
+                setSortFilterState={setSortFilterState}
             />
     
 

@@ -12,7 +12,8 @@ function SearchBar (props) {
     setSearchResultsReady,
     setIsLoading,
     chosenPlanetState,
-    setChosenPlanetState
+    setChosenPlanetState,
+    setSortFilterState
   } = props;
 
   function getDatesInRange (startDate, endDate) {
@@ -53,6 +54,10 @@ function SearchBar (props) {
     setChosenPlanetState(e.target.value)
   }
 
+  function setSortFilter (e) {
+    setSortFilterState(e.target.value);
+  }
+
   function handleSetDateRange (value) {
     setDateRange([value[0], value[1]]); 
     setDateRangeArray(getDatesInRange(value[0], value[1]));
@@ -77,6 +82,13 @@ function SearchBar (props) {
           <option>No Filter</option>
           {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}
         </select>
+
+        {/* <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>
+          <option disabled selected value>Sort By:</option>
+          <option>None</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+        </select> */}
 
         <button onClick={applySearchFilters}
           className='btn btn-primary'

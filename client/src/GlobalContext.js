@@ -20,8 +20,8 @@ export function GlobalProvider( {children} ) {
     const [dateRangeArray, setDateRangeArray] = useState();
     const [chosenPlanetState, setChosenPlanetState] = useState(null);
     const [hotelsState, setHotelsState] = useState();
+    const [hotelInfoObjectState, setHotelInfoObjectState] = useState({});
 
-    // const localHost = "http://localhost:8800";
     var renderURL = "";
     if (process.env.NODE_ENV === "development") {
         renderURL = "http://localhost:8800";
@@ -42,7 +42,9 @@ export function GlobalProvider( {children} ) {
             setChosenPlanetState,
             hotelsState,
             setHotelsState,
-            renderURL
+            renderURL,
+            hotelInfoObjectState,
+            setHotelInfoObjectState
         } }>
             {children}
         </GlobalContext.Provider>
