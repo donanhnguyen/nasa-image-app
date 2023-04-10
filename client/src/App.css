@@ -299,6 +299,9 @@ a:hover {
   background-color: rgb(0, 34, 64);
   animation: wheelBackgroundColor 12s infinite;
 }
+.highlighted {
+  border-bottom: 2px solid white;
+}
 @keyframes wheelBackgroundColor {
   from, to { background-color: rgba(0, 9, 134, 0.88); }
   10%      { background-color: rgb(0, 39, 22); }

@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import './App.css';
 import Axios from 'axios';
 import {Link} from "react-router-dom"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
 import Modal from './Modal';
 
@@ -11,6 +11,7 @@ function Nav (props) {
   const contextInfo = useContext(GlobalContext);
   const {currentUserState, setCurrentUserState, setChosenPlanetState, setDateRange, setDateRangeArray} = contextInfo;
   const navigate = useNavigate();
+  const location = useLocation();
 
   function logOut() {
       // set current user to null
@@ -27,7 +28,6 @@ function Nav (props) {
   function displayLogInOrLogOutButton () {
     if (contextInfo.currentUserState) {
       return (
-        // <li><button className='btn btn-danger' onClick={logOut}>Log Out</button></li>
         <li>        
           <div class="modal-container">
           <input id="modal-toggle" type="checkbox"/>
@@ -44,7 +44,7 @@ function Nav (props) {
       )
     } else {
       return (
-        <li><Link to='/login'>Log In</Link></li>
+        <li><Link className={`${location.pathname === '/login' ? 'highlighted' : ""}`} to='/login'>Log In</Link></li>
       )
     }
   }
@@ -52,7 +52,7 @@ function Nav (props) {
   function displaySignUpButtonOrNot () {
     if (!contextInfo.currentUserState) {
       return (
-        <li><Link to='/signup'>Sign Up</Link></li>
+        <li><Link className={`${location.pathname === '/signup' ? 'highlighted' : ""}`} to='/signup'>Sign Up</Link></li>
       )
     } 
   }
@@ -60,11 +60,11 @@ function Nav (props) {
   function displayBookingsPageOrNot () {
     if (contextInfo.currentUserState) {
       return (
-        <li><Link to='/myBookings'>My Bookings</Link></li>
+        <li><Link className={`${location.pathname === '/myBookings' ? 'highlighted' : ""}`} to='/myBookings'>My Bookings</Link></li>
       )
     } 
   }
-
+  
   return (
     <div>
        
@@ -82,10 +82,10 @@ function Nav (props) {
             <ul>
  
                 <li>
-                  <Link to='/'>Home</Link>
+                  <Link className={`${location.pathname === '/' ? 'highlighted' : ""}`} to='/'>Home</Link>
                 </li>
                 <li>
-                  <Link to='/search'>Search Hotels</Link>
+                  <Link className={`${location.pathname === '/search' ? 'highlighted' : ""}`} to='/search'>Search Hotels</Link>
                 </li>
 
                 {displayBookingsPageOrNot()}
