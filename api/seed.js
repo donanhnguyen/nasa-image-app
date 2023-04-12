@@ -94,6 +94,28 @@ const seededHotels = [
     //     planet: "Kashyyyk",
     //     description: "Home to the brave wookies, this is a modest, relaxing, and affordable stay where the wookies will protect you."
     // },
+    // {
+    //     name: "Test Hotel on Naboo",
+    //     planet: "Naboo",
+    //     description: "Testing...",
+    //     rooms: [
+    //         {
+    //             name: "Test Room 1",
+    //             price: 50,
+    //             unvailableDates: [],
+    //         },
+    //         {
+    //             name: "Test  Room 2",
+    //             price: 55,
+    //             unvailableDates: [],
+    //         },
+    //         {
+    //             name: "Test Room 3",
+    //             price: 60,
+    //             unvailableDates: [],
+    //         },
+    //     ]
+    // }
 
 ]
 

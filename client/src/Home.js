@@ -17,7 +17,6 @@ function Home () {
     const {setChosenPlanetState, 
         hotelsState, 
         setHotelsState,
-        localHost,
         renderURL
     } = useContext(GlobalContext);
     
@@ -105,10 +104,6 @@ function Home () {
     return (
         <div>
             <div className="home-container">
-
-                {/* <h1 className='main-header'>
-                    GalaxyStays.com
-                </h1> */}
                 
                 <HotelPicSlider hotelsState={hotelsState}/>
 
