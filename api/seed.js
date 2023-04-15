@@ -95,6 +95,11 @@ const seededHotels = [
     //     description: "Home to the brave wookies, this is a modest, relaxing, and affordable stay where the wookies will protect you."
     // },
     // {
+    //     name: "Coruscant Skyrise Apartment",
+    //     planet: "Coruscant",
+    //     description: "A comforting, budget-friendly apartment with a skyrise view."
+    // }
+    // {
     //     name: "Test Hotel on Naboo",
     //     planet: "Naboo",
     //     description: "Testing...",
@@ -427,6 +432,13 @@ const seededRooms = [
     //     price: 35,
     //     unvailableDates: [],
     //     hotelId: '642e51c02e144f94622f2692'
+    // },
+    // coruscant skyrise apartment
+    // {
+    //     name: "Entire Apartment",
+    //     price: 90,
+    //     unvailableDates: [],
+    //     hotelId: '6439facf34c072c963fde6a6'
     // },
 ]
 

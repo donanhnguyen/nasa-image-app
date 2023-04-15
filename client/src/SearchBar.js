@@ -83,12 +83,12 @@ function SearchBar (props) {
           {allPlanets.map((planet, i) => <option key={planet+i}value={planet}>{planet}</option>)}
         </select>
 
-        {/* <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>
+        <select id='sort-filter' onChange={(e) => {setSortFilter(e)}}>
           <option disabled selected value>Sort By:</option>
           <option>None</option>
           <option>Price: Low to High</option>
           <option>Price: High to Low</option>
-        </select> */}
+        </select>
 
         <button onClick={applySearchFilters}
           className='btn btn-primary'

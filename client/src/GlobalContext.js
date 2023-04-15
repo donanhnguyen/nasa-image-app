@@ -20,7 +20,6 @@ export function GlobalProvider( {children} ) {
     const [dateRangeArray, setDateRangeArray] = useState();
     const [chosenPlanetState, setChosenPlanetState] = useState(null);
     const [hotelsState, setHotelsState] = useState();
-    const [hotelInfoObjectState, setHotelInfoObjectState] = useState({});
 
     var renderURL = "";
     if (process.env.NODE_ENV === "development") {
@@ -43,8 +42,6 @@ export function GlobalProvider( {children} ) {
             hotelsState,
             setHotelsState,
             renderURL,
-            hotelInfoObjectState,
-            setHotelInfoObjectState
         } }>
             {children}
         </GlobalContext.Provider>

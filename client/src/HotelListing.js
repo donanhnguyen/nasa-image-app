@@ -1,4 +1,3 @@
-import { useLocation, useNavigate, Link} from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
@@ -6,7 +5,7 @@ import GlobalContext from './GlobalContext';
 function HotelListing (props) {
 
     const contextInfo = useContext(GlobalContext);
-    const {dateRangeArray, isRoomAvailableOrNot, renderURL, setHotelInfoObjectState, chosenPlanetState} = contextInfo;
+    const {dateRangeArray, isRoomAvailableOrNot, renderURL} = contextInfo;
 
     const {hotel, navigateToHotelShowPage, sortFilterState} = props;
     const [roomsState, setRoomsState] = useState([]);
@@ -17,14 +16,6 @@ function HotelListing (props) {
                 setRoomsState(response.data);
             })
     }, [])
-
-    // useEffect(() => {
-    //     if (roomsState) {
-    //         setHotelInfoObjectState((prevState) => {
-    //             return {...prevState, [`${hotel.name}`]: getStartingPrice()}
-    //         })
-    //     }
-    // }, [sortFilterState, chosenPlanetState])
 
     function getStartingPrice () {
         if (roomsState.length > 0) {

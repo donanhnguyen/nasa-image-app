@@ -21,13 +21,21 @@ function Search () {
         dateRangeArray,
         dateRange,
         renderURL,
-        hotelInfoObjectState
+        hotelInfoObjectState,
+        hotelsState
     } = useContext(GlobalContext);
 
     const searchResultsContainerRef = useRef(null);
 
     var allPlanets = [];
-    if (allHotelsState) {
+
+    if (hotelsState) {
+        for (let i in hotelsState) {
+            if (!allPlanets.includes(hotelsState[i].planet)) {
+                allPlanets.push(hotelsState[i].planet);
+            }
+        }
+    } else {
         for (let i in allHotelsState) {
             if (!allPlanets.includes(allHotelsState[i].planet)) {
                 allPlanets.push(allHotelsState[i].planet);
@@ -36,10 +44,15 @@ function Search () {
     }
 
     useEffect(() => {
-        Axios.get(`${renderURL}/api/hotels/`)
-            .then((response) => {
-                setAllHotelsState(response.data)
-            })
+        if (!hotelsState) {
+            Axios.get(`${renderURL}/api/hotels/`)
+                .then((response) => {
+                    setAllHotelsState(response.data)
+                })    
+        } else {
+            setAllHotelsState(hotelsState);
+        }
+        
     }, [])
 
     useEffect(() => {
@@ -71,25 +84,19 @@ function Search () {
         }
         // see if sort filter is selected or not
 
-        for (let i in hotelsArrayBeforeFilters) {
-            let currentHotel = hotelsArrayBeforeFilters[i];
-            currentHotel['lowestPrice'] = hotelInfoObjectState[currentHotel.name];
+        var finalArray;
+
+        if (sortFilterState === "Price: Low to High") {
+            finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelA.lowestPrice - hotelB.lowestPrice)
+        } else if (sortFilterState === "Price: High to Low") {
+            finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelB.lowestPrice - hotelA.lowestPrice)
+        } else {
+            finalArray = hotelsArrayBeforeFilters;
         }
-
-        // var finalArray;
-
-        // if (sortFilterState === "Price: Low to High") {
-        //     finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelA.lowestPrice - hotelB.lowestPrice)
-        // } else if (sortFilterState === "Price: High to Low") {
-        //     finalArray = hotelsArrayBeforeFilters.sort((hotelA, hotelB) => hotelB.lowestPrice - hotelA.lowestPrice)
-        // } else {
-        //     finalArray = hotelsArrayBeforeFilters;
-        // }
         
-        // console.log(finalArray);
-
+        // display the hotel listings after all filters;
         if (allHotelsState) {
-            var displayAllHotels = hotelsArrayBeforeFilters.map((hotel, index) => {
+            var displayAllHotels = finalArray.map((hotel, index) => {
                 return (
                     <HotelListing
                         key={hotel.name + index}
