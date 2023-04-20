@@ -40,10 +40,7 @@ function HotelShowPage () {
                     </button>
         } else if (!isRoomAvailableOrNot(dateRangeArray, room.unavailableDates)) {
             return <p style={{color: 'red'}}>Unavailable</p>
-        } else {
-            return <p>Please log in before booking.</p>
-        }
-    
+        } 
     }
 
     function displayRooms () {
@@ -91,7 +88,9 @@ function HotelShowPage () {
 
                 {/* display rooms */}
                 <h2>Rooms:</h2>
+                {currentUserState ? <h1></h1> : <h1 style={{backgroundColor: 'black', color: 'red'}}>Please Log In To Book.</h1>}
                 <div className='displayed-rooms-container'>
+                    
                     {displayRooms()}
                 </div>
 

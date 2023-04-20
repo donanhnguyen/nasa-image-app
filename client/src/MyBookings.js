@@ -36,7 +36,7 @@ function MyBookings () {
 
 
   function displayAllBookings () {
-    if (myBookingsState) {
+    if (myBookingsState && myBookingsState.length > 0) {
       const displayed = myBookingsState.map((booking) => {
         return (
           <SingleBooking
@@ -47,6 +47,8 @@ function MyBookings () {
         )
       })
       return displayed.reverse();
+    } else {
+      return (<h1 style={{color: 'white'}}>You have no bookings. Book now!</h1>)
     }
   }
 

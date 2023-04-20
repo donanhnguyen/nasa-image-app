@@ -81,7 +81,10 @@ function Home () {
             var featuredHotels = [firstFeaturedHotel, secondFeaturedHotel];
             const displayThem = featuredHotels.map((hotel) => {
                 return (
-                    <div key={hotel.name} className='flip-card single-featured-hotel'>
+                    <div key={hotel.name} 
+                        className='flip-card single-featured-hotel'
+                        onClick={() => navigate(`/hotel/${hotel._id}`, {state: {hotel: hotel}}) }
+                    >
                     <div className="flip-card-inner">
 
                         <div className="flip-card-front">

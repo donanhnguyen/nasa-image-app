@@ -149,6 +149,11 @@ a:hover {
 .single-featured-hotel {
   text-align: center;
   margin: 10px;
+  opacity: 90%;
+}
+.single-featured-hotel:hover {
+  opacity: 100%;
+  cursor: pointer;
 }
 .single-featured-hotel p {
   text-align: center;

@@ -44,8 +44,8 @@ function SingleBooking (props) {
             <div className={`modal-content`}>
                 <span onClick={() => setToggledConfirm(false)} className="close">&times;</span>
                 <h1 style={{color: 'red', fontSize: '30px'}}>Are you sure you want to cancel?</h1>
-                <button className='btn btn-primary btn-lg' onClick={() => setToggledConfirm(false)}>No</button>
-                <button className='btn btn-danger btn-lg' onClick={cancelReservation}>Yes</button>
+                <button style={{width: '50%', margin: 'auto'}} className='btn btn-primary btn-lg' onClick={() => setToggledConfirm(false)}>No</button>
+                <button style={{width: '50%', margin: 'auto'}} className='btn btn-danger btn-lg' onClick={cancelReservation}>Yes</button>
             </div>
         </div>
 

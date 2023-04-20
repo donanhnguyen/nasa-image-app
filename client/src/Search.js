@@ -21,7 +21,6 @@ function Search () {
         dateRangeArray,
         dateRange,
         renderURL,
-        hotelInfoObjectState,
         hotelsState
     } = useContext(GlobalContext);
 
@@ -117,7 +116,7 @@ function Search () {
        <div id="myModal" className={`modal ${showErrorModal ? "yes-modal" : "" }`}>
             <div className={`modal-content`}>
                 <p style={{fontSize: '28px', color: 'red'}}>Please select your date range first</p>
-                <button className="btn btn-danger btn-lg" style={{width: '50%', margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
+                <button className="btn btn-danger btn-lg" style={{width: '35%', margin: 'auto'}} onClick={() => setShowErrorModal(false)}>Okay</button>
             </div>
         </div>
 
