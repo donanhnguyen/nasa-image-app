@@ -1,6 +1,6 @@
 # GalaxyStays
 
-[Live Link](https://lightsaberbay.onrender.com/#/)
+[Live Link](https://galaxystays.onrender.com/)
 
 <h1>Description</h1>
 
