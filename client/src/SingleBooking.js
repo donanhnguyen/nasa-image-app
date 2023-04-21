@@ -61,12 +61,12 @@ function SingleBooking (props) {
                 <h1>Duration: {booking.dates[0]} - {booking.dates[booking.dates.length-1]}</h1>
                 <p>Confirmation Number: {booking._id}</p>
 
-                <h1 className='total-price'>Total Price: <h1 style={{color: 'green'}}>${booking.totalPrice}</h1></h1>
-                <button onClick={() => setToggledConfirm(true)}
-                className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button>
+                
 
             </div>
-        
+            <h1 className='total-price'>Total Price: <h1 className='amount-number'>${booking.totalPrice}</h1></h1>
+                    <button onClick={() => setToggledConfirm(true)}
+                    className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button>
         </div>
     )
 }

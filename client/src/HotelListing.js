@@ -44,7 +44,7 @@ function HotelListing (props) {
       return (
         <div 
             className="single-hotel-listing-container" 
-            >
+        >
 
             {/* 33.3% */}
             <div className="image-part">
@@ -54,7 +54,7 @@ function HotelListing (props) {
             
             {/* 66.6% */}
             <div className="hotel-listing-info">
-                <h1>{hotel.name}</h1>
+                <h2 className="hotel-name-in-listing">{hotel.name}</h2>
                 <h1>Planet: {hotel.planet}</h1>
                 
                 <h1>
