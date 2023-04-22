@@ -6,7 +6,7 @@ import './modal.css'
 function SingleBooking (props) {
 
     const {currentUserState, localHost, renderURL} = useContext(GlobalContext);
-    const {booking, myBookingsDispatch} = props;
+    const {booking, myBookingsDispatch, inThePast} = props;
     const [singleRoomState, setSingleRoomState] = useState();
     const [toggledConfirm, setToggledConfirm] = useState(false);
 
@@ -38,7 +38,7 @@ function SingleBooking (props) {
     }
 
     return (
-        <div className='single-booking-container'>
+        <div className={`single-booking-container ${inThePast ? "past-booking-grayed-out" : ""}`}>
 
         <div id="myModal" className={`modal ${toggledConfirm ? "yes-modal" : "" }`}>
             <div className={`modal-content`}>
@@ -65,8 +65,10 @@ function SingleBooking (props) {
 
             </div>
             <h1 className='total-price'>Total Price: <h1 className='amount-number'>${booking.totalPrice}</h1></h1>
-                    <button onClick={() => setToggledConfirm(true)}
-                    className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button>
+
+            {!inThePast ? <button onClick={() => setToggledConfirm(true)}
+                    className='cancel-reservation-button btn btn-danger btn-lg'>Cancel Reservation</button> : ""}
+                    
         </div>
     )
 }

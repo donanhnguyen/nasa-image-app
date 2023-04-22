@@ -502,6 +502,9 @@ a:hover {
   padding: 7% 0;
 
 }
+.past-booking-grayed-out {
+  opacity: 70%;
+}
 .hotel-pic-my-bookings-page {
   width: 100%;
   height: 100%;

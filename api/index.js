@@ -33,6 +33,7 @@ mongoose.connection.on('disconnected', () => {
 var corsOptions = {
     origin: "https://galaxystays.onrender.com"
 }
+// uncomment the below code when in development mode, comment it out in production
 // var corsOptions = {
 //     origin: "http://localhost:3000"
 // }
