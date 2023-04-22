@@ -39,13 +39,14 @@ function MyBookings () {
     var upcomingBookings = [];
     for (let i in myBookingsState) {
       let currentBooking = myBookingsState[i];
-      let currentDate = new Date().toDateString();
-      if ( currentDate <= currentBooking.dates[currentBooking.dates.length-1] ) {
+      let currentDate = new Date();
+      let lastDateOfBooking = new Date(currentBooking.dates[currentBooking.dates.length-1])
+      if ( currentDate < lastDateOfBooking) {
         upcomingBookings.push(currentBooking);
       }
     }
-    // sort by upcoming date
-    var upcomingBookingsSorted = upcomingBookings.sort((bookingA, bookingB) => {return bookingA.dates[0] - bookingB.dates[0]});
+    // sort by upcoming date, nearest date at top
+    var upcomingBookingsSorted = upcomingBookings.sort((bookingA, bookingB) => {return new Date(bookingA.dates[0]) - new Date(bookingB.dates[0]) });
     // display them
     const displayed = upcomingBookingsSorted.map((booking) => {
       return (
@@ -65,13 +66,14 @@ function MyBookings () {
     var pastBookings = [];
     for (let i in myBookingsState) {
       let currentBooking = myBookingsState[i];
-      let currentDate = new Date().toDateString();
-      if ( currentDate > currentBooking.dates[currentBooking.dates.length-1] ) {
+      let currentDate = new Date();
+      let lastDateOfBooking = new Date(currentBooking.dates[currentBooking.dates.length-1])
+      if ( currentDate > lastDateOfBooking ) {
         pastBookings.push(currentBooking);
       }
     }
-    // sort them by date
-    var pastBookingsSorted = pastBookings.sort((bookingA, bookingB) => {return bookingB.dates[0] - bookingA.dates[0]});
+    // sort them by date, most recent to least recent
+    var pastBookingsSorted = pastBookings.sort((bookingA, bookingB) => {return new Date(bookingB.dates[0]) - new Date(bookingA.dates[0]) });
 
     // display them
     const displayed = pastBookingsSorted.map((booking) => {
