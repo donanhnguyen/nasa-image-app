@@ -4,7 +4,7 @@
 
 <h1>Description</h1>
 
-Full-Stack, Star Wars themed hotel booking application. Users come to this site to book a hotel stay at their desired hotel in a certain planet for a certain time duration. Users can search for available hotels based on the date range they target, filter by planet, and select a specific room within each hotel. After booking a reservation, they can then cancel their upcoming reservation if they choose.
+GalaxyStays is a Full-stack Star Wars themed hotel booking application. Users come to this site to book a hotel stay at their desired hotel in a certain planet for a certain time duration. Users can search for available hotels based on the date range they target, filter by planet, and select a specific room within each hotel. After booking a reservation, they can then cancel their upcoming reservation if they choose.
 
 <h1>Languages and tools used:</h1>
 
