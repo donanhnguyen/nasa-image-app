@@ -253,7 +253,7 @@ a:hover {
   }
   .hotel-listing-info {
     text-align: center;
-    padding: 0 0;
+    padding: 10px 0;
   }
   .hotel-listing-info h1 {
     font-size: 1.1em;
@@ -267,9 +267,9 @@ a:hover {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 460px) {
-  .search-bar-container {
-    
+@media screen and (max-width: 575px) {
+  .single-hotel-listing-container {
+    height: 240px;
   }
 }
 
