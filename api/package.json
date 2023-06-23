@@ -1,5 +1,5 @@
 {
-  "name": "galaxystays",
+  "name": "nasa-image-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedonwind69/galaxystays.git"
+    "url": "git+https://github.com/thedonwind69/nasa-image-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thedonwind69/galaxystays/issues"
+    "url": "https://github.com/thedonwind69/nasa-image-app/issues"
   },
-  "homepage": "https://github.com/thedonwind69/galaxystays#readme",
+  "homepage": "https://github.com/thedonwind69/nasa-image-app#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
