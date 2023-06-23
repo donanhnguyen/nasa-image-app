@@ -1,18 +1,17 @@
 import {useState, useEffect, useContext} from 'react';
-import { useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './LoginForm.css';
 import './modal.css'
 
-function LogIn(props) {
+function LogIn () {
 
 
     const contextInfo = useContext(GlobalContext);
-    const {localHost, renderURL} = contextInfo;
+    const {renderURL} = contextInfo;
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     const [errorsState, setErrorsState] = useState("");
@@ -34,22 +33,18 @@ function LogIn(props) {
     function logIn (e) {
         e.preventDefault();
         if (formState.username === "" || formState.password === "") {
-            setErrorsState("Invalid Login.")
+            setErrorsState("Invalid Login")
         }
-        Axios.get(`${renderURL}/api/users/${formState.username}/`)
+        Axios.post(`${renderURL}/api/users/logIn`, formState)
             .then((response) => {
-                if (response.data.password === formState.password) {
-                    contextInfo.setCurrentUserState(response.data);
-                    setSuccessfulLogIn(true);
-                    setTimeout(() => {
-                       navigate('/');  
-                    }, 1000)
-                } else {
-                    setErrorsState("Wrong Password");
-                }
+                contextInfo.setCurrentUserState(response.data);
+                setSuccessfulLogIn(true);
+                setTimeout(() => {
+                    navigate('/');  
+                }, 1000)
             })
             .catch((error) => {
-                setErrorsState("Invalid Login")
+                setErrorsState(error.response.data)
             }) 
     }
 

@@ -1,18 +1,17 @@
 import {useState, useEffect, useContext} from 'react';
-import { useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './App.css';
 import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './modal.css'
 
-function SignUp (props) {
+function SignUp () {
 
 
     const contextInfo = useContext(GlobalContext);
     const {setCurrentUserState, currentUserState, renderURL} = contextInfo;
     const [successfulResgister, setSuccessfulRegister] = useState(false);
 
-    const location = useLocation();
     const navigate = useNavigate();
 
     const [errorsState, setErrorsState] = useState("");
@@ -35,7 +34,7 @@ function SignUp (props) {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Fields can't be blank!");
         } else {
-          Axios.post(`${renderURL}/api/auth/register/`, formState)
+          Axios.post(`${renderURL}/api/users/register`, formState)
             .then((response) => {
                setCurrentUserState(response.data);
                setSuccessfulRegister(true);
