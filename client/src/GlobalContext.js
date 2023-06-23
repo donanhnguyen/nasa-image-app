@@ -24,9 +24,10 @@ export function GlobalProvider( {children} ) {
     var renderURL = "";
     if (process.env.NODE_ENV === "development") {
         renderURL = "http://localhost:8800";
-    } else if (process.env.NODE_ENV === 'production') {
-        renderURL = "https://galaxystays-backend.onrender.com";
-    };
+    } 
+    // else if (process.env.NODE_ENV === 'production') {
+    //     renderURL = "https://galaxystays-backend.onrender.com";
+    // };
     
     return (
         <GlobalContext.Provider value={ {
