@@ -8,11 +8,10 @@ export function GlobalProvider( {children} ) {
 
     var renderURL = "";
     if (process.env.NODE_ENV === "development") {
-        renderURL = "http://localhost:8800";
-    } 
-    // else if (process.env.NODE_ENV === 'production') {
-    //     renderURL = "";
-    // };
+        renderURL = "http://localhost:8800"
+    } else if (process.env.NODE_ENV === 'production') {
+        renderURL = "nasa-image-app-api.vercel.app"
+    };
     
     return (
         <GlobalContext.Provider value={ {
