@@ -24,7 +24,7 @@ mongoose.connection.on('disconnected', () => {
 
 // middlewares
 var corsOptions = {
-    origin: ""
+    origin: "https://nasa-image-app-gamma.vercel.app/"
 }
 
 // uncomment the below code when in development mode, comment it out in production
@@ -34,8 +34,7 @@ var corsOptions = {
 
 
 app.use(express.json());
-// app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use('/api/users/', usersRoute);
 
