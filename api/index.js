@@ -23,10 +23,12 @@ mongoose.connection.on('disconnected', () => {
 })
 
 // middlewares
-var corsOptions = {
-    origin: "https://nasa-image-app-api.vercel.app"
-}
-
+const corsOptions = {
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+ 
 // uncomment the below code when in development mode, comment it out in production
 // var corsOptions = {
 //     origin: "http://localhost:3000"
