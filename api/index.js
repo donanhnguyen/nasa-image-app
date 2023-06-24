@@ -24,9 +24,9 @@ mongoose.connection.on('disconnected', () => {
 
 // middlewares
 const corsOptions = {
-    origin: 'https://nasa-image-app-gamma.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
+    origin: ['https://nasa-image-app-gamma.vercel.app'], 
+    methods: ["POST", "GET"],
+    credentials:true,           
  }
  
 // uncomment the below code when in development mode, comment it out in production
