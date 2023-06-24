@@ -5,9 +5,13 @@ import Axios from 'axios';
 import GlobalContext from './GlobalContext';
 import './LoginForm.css';
 import './modal.css'
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 function LogIn () {
 
+    const clientID = '972540435897-84bc3vsu79a0un7g9ug2h92atk49jir7.apps.googleusercontent.com'
+    const clientSecret = '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'
 
     const contextInfo = useContext(GlobalContext);
     const {renderURL} = contextInfo;
@@ -59,9 +63,25 @@ function LogIn () {
         })
     }
 
+
   return (
     <div className="App">
         
+        <div style={{width: '200px', margin: 'auto'}}>
+            <GoogleOAuthProvider clientId={clientID}>
+                <GoogleLogin
+                    onSuccess={credentialResponse => {
+                        var decoded = jwt_decode(credentialResponse.credential);
+                        contextInfo.setCurrentUserState({username: decoded.name});
+                        navigate('/');
+                    }}
+                    onError={() => {
+                        console.log('Login Failed');
+                    }}
+                />;
+            </GoogleOAuthProvider>
+        </div>
+
       <header className="App-header">
 
       {/* modal */}
@@ -72,7 +92,7 @@ function LogIn () {
             </div>
         </div>
 
-
+        
 
         <div className="login-box">
         <h1 style={{color: 'red'}}>Please log in to see the pic of the day.</h1>

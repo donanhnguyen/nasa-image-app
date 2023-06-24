@@ -13,7 +13,7 @@ function Home () {
 
     const navigate = useNavigate();
     const contextInfo = useContext(GlobalContext);
-    const {currentUserState, renderURL} = contextInfo;
+    const {currentUserState} = contextInfo;
     const API_KEY = '8ClltNrkTWf5trTwGLhHiqbk2WuYydtfVHwXHH6I';
 
     const [imageInfo, setImageInfo] = useState();

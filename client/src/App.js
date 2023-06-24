@@ -5,13 +5,14 @@ import SignUp from './SignUp';
 import Home from './Home';
 import { GlobalProvider } from './GlobalContext';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
  
 
   return (
     <div className="App">
-
+      
     <GlobalProvider>
 
       <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
       </BrowserRouter>
 
     </GlobalProvider>
+
     </div>
   );
 }
