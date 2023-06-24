@@ -13,7 +13,8 @@ function LogIn () {
     const clientID = '972540435897-84bc3vsu79a0un7g9ug2h92atk49jir7.apps.googleusercontent.com'
     const clientSecret = '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'
 
-    Axios.defaults.withCredentials = true;
+    // Axios.defaults.withCredentials = true;
+    
     const contextInfo = useContext(GlobalContext);
     const {renderURL} = contextInfo;
 
