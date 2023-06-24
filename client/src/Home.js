@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './App.css';
 import GlobalContext from './GlobalContext';
 import Axios from 'axios';
+import Loader from './Loader';
 
 function Home () {
 
@@ -39,8 +40,11 @@ function Home () {
 
                 <p style={{color: 'yellow', fontSize: '2.2em'}}>{imageInfo? imageInfo.title : ""}</p>
 
-                <img style={{width: '500px', height: "400px"}} src={imageInfo ? imageInfo.hdurl : ""} placeholder='nasa image of the day...'></img>
-          
+                {imageInfo ?
+                    <img style={{width: '500px', height: "400px"}} src={imageInfo ? imageInfo.hdurl : ""} placeholder='nasa image of the day...'></img>
+                    :
+                    <div> Loading image... <Loader /> </div>
+                }
                 
             </div>
         </div>
