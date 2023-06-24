@@ -24,7 +24,7 @@ mongoose.connection.on('disconnected', () => {
 
 // middlewares
 const corsOptions = {
-    origin:'*', 
+    origin: 'https://nasa-image-app-api.vercel.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200,
  }
