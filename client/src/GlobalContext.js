@@ -6,12 +6,12 @@ export function GlobalProvider( {children} ) {
 
     const [currentUserState, setCurrentUserState] = useState(null);
 
-    var renderURL = "";
-    if (process.env.NODE_ENV === "development") {
-        renderURL = "http://localhost:8800"
-    } else if (process.env.NODE_ENV === 'production') {
-        renderURL = "https://nasa-image-app-api.vercel.app"
-    };
+    var renderURL = "https://nasa-image-app-api.vercel.app";
+    // if (process.env.NODE_ENV === "development") {
+    //     renderURL = "http://localhost:8800"
+    // } else if (process.env.NODE_ENV === 'production') {
+    //     renderURL = "https://nasa-image-app-api.vercel.app"
+    // };
     
     return (
         <GlobalContext.Provider value={ {
