@@ -61,6 +61,7 @@ function LogIn () {
 
   return (
     <div className="App">
+        
       <header className="App-header">
 
       {/* modal */}
@@ -71,7 +72,10 @@ function LogIn () {
             </div>
         </div>
 
+
+
         <div className="login-box">
+        <h1 style={{color: 'red'}}>Please log in to see the pic of the day.</h1>
         <h2>Log In</h2>   
         {/* display error messages */}
         <div className='error-messages'>

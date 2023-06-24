@@ -15,7 +15,7 @@ function Nav () {
       // set current user to null
       setCurrentUserState(null);
       // navigate back to home
-      navigate('/');
+      navigate('/login');
 
   }
 
@@ -23,14 +23,14 @@ function Nav () {
     if (contextInfo.currentUserState) {
       return (
         <li>        
-          <div class="modal-container">
+          <div className="modal-container">
           <input id="modal-toggle" type="checkbox"/>
-          <button for='modal-toggle'>Log Out</button>
-          <div class="modal-backdrop">
-              <div class="modal-content">
-              <label class="modal-close" for="modal-toggle">X</label>
+          <button htmlfor='modal-toggle'>Log Out</button>
+          <div className="modal-backdrop">
+              <div className="modal-content">
+              <label className="modal-close" htmlfor="modal-toggle">X</label>
               <h1>Are you sure you want to log out?</h1>
-              <label onClick={logOut}class="modal-close button" for="modal-toggle">Yes</label>
+              <label onClick={logOut} className="modal-close button" htmlfor="modal-toggle">Yes</label>
               </div>
           </div>
           </div>
@@ -54,10 +54,11 @@ function Nav () {
   return (
     <div>
        
-          <nav className='nav-bar'>   
-          <h1 className='galaxyStays'>
+          <nav className='nav-bar'> 
+          <img style={{width: '200px', heght: '100%', float: 'left'}} src="https://cdn.mos.cms.futurecdn.net/baYs9AuHxx9QXeYBiMvSLU-1200-80.jpg"></img>
+          {/* <h1 className='galaxyStays'>
               Nasa Images
-          </h1>
+          </h1> */}
             {
               currentUserState ?
               <p className='loggedin'>Welcome, {currentUserState.username}</p>
