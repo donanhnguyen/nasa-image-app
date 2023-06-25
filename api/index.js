@@ -23,7 +23,7 @@ mongoose.connection.on('disconnected', () => {
 })
 
 // middlewares
-const corsOptions = {
+var corsOptions = {
     origin: 'https://nasa-image-app-frontend.vercel.app', 
  }
  
