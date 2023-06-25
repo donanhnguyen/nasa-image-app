@@ -41,7 +41,7 @@ function LogIn () {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Invalid Login")
         }
-        Axios.post(`${renderURL}/api/users/logIn`, formState)
+        Axios.post(`${renderURL}/api/users/logIn/`, formState)
             .then((response) => {
                 contextInfo.setCurrentUserState(response.data);
                 setSuccessfulLogIn(true);
@@ -50,7 +50,7 @@ function LogIn () {
                 }, 1000)
             })
             .catch((error) => {
-                setErrorsState(error.response.data)
+                setErrorsState("Invalid!")
             }) 
     }
 

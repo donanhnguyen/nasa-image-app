@@ -34,7 +34,7 @@ function SignUp () {
         if (formState.username === "" || formState.password === "") {
             setErrorsState("Fields can't be blank!");
         } else {
-          Axios.post(`${renderURL}/api/users/register`, formState)
+          Axios.post(`${renderURL}/api/users/register/`, formState)
             .then((response) => {
                setCurrentUserState(response.data);
                setSuccessfulRegister(true);
